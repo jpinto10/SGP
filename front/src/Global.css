@@ -7,8 +7,10 @@
 
     --cinza-100: #e1e1e6;
     --cinza-300: #c4c4cc;
+    --cinza-400: #c5c5c5;
     --cinza-600: #323238;
     --cinza-700: #29292e;
+    --cinza-800: #37373d;
 
 
 }
@@ -24,7 +26,7 @@ body, html, #root {
 }
   
 body {
-    background: var(--preto);
+    background: var(--cinza-700);
     color: var(--cinza-300);
 }
 

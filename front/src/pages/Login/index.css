@@ -6,7 +6,7 @@
 }
 
 .login01{
-    background-color: var(--cinza-600);
+    background-color: var(--cinza-400);
     height: 35%;
     width: 25%;
     display: flex;
@@ -20,8 +20,7 @@
 
 .login01 img{
     padding: 5px;
-    width: 100px;
-    height: 150px;
+    width: 80%;
 }
 
 .login01 h2{
@@ -33,7 +32,7 @@
 }
 
 .login02{
-    background-color: var(--cinza-600);
+    background-color: var(--cinza-400);
     height: 35%;
     width: 25%;
     display: flex;
@@ -48,7 +47,7 @@
 .login02 h1{
     text-align: center;
     margin-bottom: 15px;
-    color: var(--branco);
+    color: var(--cinza-800);
 }
 
 .login02 form{
@@ -72,7 +71,7 @@
     width: 100%;
     padding: 8px;
     border-radius: 8px;
-    background-color: blue;
+    background-color: rgb(82, 82, 240);
     margin-bottom: 15px;
     color: var(--branco);
 }
