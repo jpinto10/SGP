@@ -1,0 +1,44 @@
+:root{
+    --branco: #ffffff;
+    --preto:  #0f0e0e;
+
+    --verde: #84cc16;
+    --azul: #38bdf8;
+
+    --cinza-100: #e1e1e6;
+    --cinza-300: #c4c4cc;
+    --cinza-600: #323238;
+    --cinza-700: #29292e;
+
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html, #root {
+    height: 100%;
+}
+  
+body {
+    background: var(--preto);
+    color: var(--cinza-300);
+}
+
+  
+a{
+    text-decoration: none;
+}
+
+button{
+    cursor: pointer;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+  

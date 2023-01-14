@@ -1,0 +1,63 @@
+.topo{
+    background-color:#fff;
+    border-bottom: 1px solid #1b3675;
+    position: fixed;
+    width: 100%;
+}
+
+.topo-avatar{
+    height: 40px;
+}
+
+.topo-conteudo{
+    max-width: 1024px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+    margin: 0 auto;
+}
+
+.topo-logo-box{
+    display: flex;
+    align-items: center;
+}
+
+.topo-logo{
+    width: 75px;
+    height: 40px;
+    margin-right: 5px;
+}
+
+.topo-nome-usuario{
+    padding-left: 5px;
+    color: #1b3675;
+    font-size: 26px;
+    text-decoration: none;    
+}
+
+.topo-link {
+    color: #1b3675;
+    text-decoration: none;
+    padding: 0px 15px 10px 15px;
+
+    text-transform: uppercase;
+    line-height: 18px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.topo-link:hover {
+    border-bottom: 3px solid #1b3675;
+}
+
+@media (max-width: 600px) {
+    .topo-nome-usuario {
+        display: none;
+    }
+
+    .lista-sobre-aparelho {
+        flex-direction: column;
+    }
+}
