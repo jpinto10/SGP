@@ -2,8 +2,15 @@ import React from 'react';
 
 const Principal = (props) => {
     return (
-        <div>
-            TELA DE Principal
+        <div className='principal-container'>
+            <div className='cabec'>
+                visitante
+            </div>
+            <img src=''/>
+            
+            <div className='rodape'>
+                visitante
+            </div>
         </div>
       );
 }
