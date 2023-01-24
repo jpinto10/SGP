@@ -262,8 +262,6 @@ routers.post("/upload-atestados", UploaderAtestados.array(), async (req, res, ne
     return true
 })
 
-
-
 //periodos das marcações - identificando mais de um periodo a ser tratado
 routers.post('/periodos', async function(req, res) {
    
@@ -336,7 +334,6 @@ routers.post('/usuarios', async function(req, res) {
     conn.dbCloseConect();
 
 })
-
 
 routers.post('/abonos', async function(req, res) {
     const sql = `SELECT P6_CODIGO, P6_DESC
@@ -436,7 +433,6 @@ routers.post('/bancohorastotal', async function(req, res) {
 });
 //
 
-
 routers.post('/login', async function(req, res) {
     const sql = `SELECT * FROM MAPA.dbo.USUARIOS WHERE email = '${req.body.email}' AND senha = '${req.body.senha}' `
     const rows = await conn.dbConect(sql)
@@ -463,6 +459,7 @@ routers.post('/logout', function(req, res) {
 routers.get('/dashboard', function(req, res) {
 
     })
+    
     //rota dashboard
 
 //rotas de JUSTIFICATIVA - inicio

@@ -8,7 +8,7 @@ module.exports = {
     ListUsers(){
         return new Promise((resolve, reject)=>{
             conn.query(`
-                SELECT * FROM users WHERE ativo = 'SIM' OR ativo = '';
+                SELECT * FROM usuarios WHERE ativo = 'SIM' OR ativo = '';
             `, (erro, results) =>{
                 if (erro){
                     reject(erro);
@@ -22,14 +22,13 @@ module.exports = {
     //metodo de renderizar
     renderizar(req, res, error, sucess){
         res.render('admin/login', { 
-            title: 'SGP - Academia',
+            title: 'SGP - Construtora',
             body: req.body,
             error:error,
             sucess:sucess
         });
 
     },
-
     
     //metodo
     // login(email, senha){
@@ -59,10 +58,9 @@ module.exports = {
     // }, 
 
     login(email, senha){
-        console.log("rota...")
         let resLog
         return (
-            resLog =  conn.execSqlquery('SELECT * FROM MAPA.dbo.USUARIOS', resLog)
+            resLog =  conn.execSqlquery('SELECT * FROM SGP.dbo.USUARIOS', resLog)
         )
     },
 
@@ -75,14 +73,16 @@ module.exports = {
             let query, parametros;
             if ( parseInt(fields.id) > 0 && (fields.senha).length === 0) {
                 query = `
-                UPDATE users 
-                SET name = ?, 
-                    email = ?, 
+                UPDATE usuarios 
+                SET nome = ?, 
+                    usuario = ?, 
+                    senha = ?, 
                     foto = ? 
                 WHERE ID = ?    
             `;
                 parametros = [fields.nome, 
-                    fields.email, 
+                    fields.usuario, 
+                    fields.senha, 
                     fields.id
                 ];
 
@@ -96,7 +96,6 @@ module.exports = {
                 }
 
             } else {
-                console.log("userControl - linha 118")
                 // //caso não tenha foto, escolhe padrão
                 // if((files.foto.nome).length === 0){
                 //     imagens = `/admin/dist/images/user.png`;
@@ -104,11 +103,11 @@ module.exports = {
                 //     imagens = `/admin/dist/images/${path.parse(files.foto.path).base}`;
                 // }
                 query =`
-                        INSERT INTO users (nome, email, senha, dtinclusao, ativo ) 
+                        INSERT INTO users (nome, usuario, senha, dtinclusao, ativo ) 
                         VALUES (?, ?, ?, ?, ?)
                     `; 
                 parametros = [fields.nome, 
-                        fields.email, 
+                        fields.usuario, 
                         fields.senha, 
                         dtinclusao,
                         bloq
@@ -128,7 +127,7 @@ module.exports = {
 
         return new Promise((resolve, reject)=>{
 
-            conn.query(`DELETE FROM users WHERE ID = ?`, 
+            conn.query(`DELETE FROM usuarios WHERE ID = ?`, 
             [id], 
             (err, results)=>{
                 if(err){
