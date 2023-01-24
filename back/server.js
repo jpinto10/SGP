@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cors());
 
-app.use('/Back/', express.static(path.resolve(__dirname,'public', 'fotos_user' )) )
+app.use('/back/', express.static(path.resolve(__dirname,'public', 'fotos_user' )) )
 
 app.use('/api', routers);
 

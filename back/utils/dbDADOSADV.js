@@ -1,10 +1,10 @@
 const sql = require('mssql')
 
-//FREITAS
-const config = "Server=172.30.0.112;Database=DADOSADV;User Id=sa;Password=f431T@s@#2022;encrypt=false;";
+//empresa
+// const config = "Server=172.30.0.112;Database=DADOSADV;User Id=sa;Password=f431T@s@#2022;encrypt=false;";
 
 //CASA
-//const config = "Server=localhost;Database=DADOSADV;User Id=sa;Password=freit@s@2015;encrypt=false;";
+const config = "Server=localhost;Database=SGP;User Id=sa;Password=sa;encrypt=false;";
 
 // async/await style:
 const pool1 = new sql.ConnectionPool(config);
@@ -17,7 +17,6 @@ module.exports = {
         try {
             const request = await pool1.request(); // or: new sql.Request(pool1)
             const result = await request.query(query)
-            // console.log('deu certo')
             return result;
         } catch (err) {
             console.error('SQL error', err);

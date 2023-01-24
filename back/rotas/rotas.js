@@ -3,17 +3,15 @@ const connDadosadv = require('../utils/dbDADOSADV');
 const express = require('express');
 const routers = express.Router();
 const cors = require('cors');
-const SECRET = 'MAPAFREITAS';
+const SECRET = 'SGPCONSULT';
 
 const multer = require('multer'); 
 
 //middware de configuração do MULTER
 const Uploader = require('../middleware/uploaderImages')
-const UploaderAtestados = require('../middleware/uploaderAtestados')
 ///
 
 let userController = require('../controll/userControl');
-let atestadoController = require('../controll/atestadoController');
 
 routers.get('/', function(req, res) {
     let resposta = { msg: 'usuário ' + req.id + " - " + req.nome + ' fez a requisição..' };
@@ -255,12 +253,6 @@ routers.post("/upload-image", Uploader.single('fotos'), async (req, res, next) =
         });
     }
 });
-
-//inteção de gerar uma lista de atestados
-routers.post("/upload-atestados", UploaderAtestados.array(), async (req, res, next)=>{
-    console.log(re.file)
-    return true
-})
 
 //periodos das marcações - identificando mais de um periodo a ser tratado
 routers.post('/periodos', async function(req, res) {
