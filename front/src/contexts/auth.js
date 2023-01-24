@@ -1,9 +1,7 @@
 import { useState, createContext, useEffect } from 'react';
 import conn from '../services/sqlconnection'
 import { toast } from 'react-toastify'
-import { isLogged, doLogin } from '../services/AuthHandler';
 export const AuthContext = createContext({});
-
 
 const conect = conn()
 
@@ -36,10 +34,10 @@ function AuthProvider({ children }){
     }, [])
 
   //função que valida o usuário autenticado
-  async function signIn(email, senha){
+  async function signIn(usuario, senha){
     //debugger
     setLoading(true)
-    const ativo = await conect.login(email, senha)
+    const ativo = await conect.login(usuario, senha)
     if(ativo.auth){
       toast.success(`Bem vindo.. ${ativo.dadosUser.nome} -  ${ativo.dadosUser.loja}`);
       setUser(ativo.dadosUser);

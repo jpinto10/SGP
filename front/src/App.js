@@ -1,13 +1,20 @@
 import './Global.css';
-import Login from './pages/Login';
+import AuthProvider from './contexts/auth';
+import Rotas from './rotasFronte'
 
-import Principal from './pages/Principal';
+import 'react-toastify/dist/ReactToastify.css';
+import {BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 
 function App() {
   return (
-      // <Login />
-      <Principal/>
+      <AuthProvider>
+        <BrowserRouter>
+          <ToastContainer autoClose={15000} position = {'top-center'} theme={'colored'}/>
+          <Rotas/>
+        </BrowserRouter>
+      </AuthProvider>
   );
 }
 
