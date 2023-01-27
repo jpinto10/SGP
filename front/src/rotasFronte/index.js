@@ -10,9 +10,9 @@ const Rotas = () => {
     debugger
     return(
         <Routes>
-            <Route path='/signin' element={ <Home/> } />
-            <Route path='/' element={ <Signin/> }  />
-            <Route path='*' component={<NotFound/>}  />    
+            <Route path='/' element={ <Home/> } />
+            <Route path='/signin' element={ <Signin/> }  />
+            <Route path='*' element={<NotFound/>}  />    
         </Routes>
     )
 }
