@@ -27,10 +27,12 @@ const Login = () => {
     },[])
     
     const obrasSelect = [
-        { value: '', name: 'Selecione uma obra' },
+        { value: '', name: '- ESCOLHA A OBRA -' },
         { value: 1, name: 'OBRA-01'},
         { value: 2, name: 'OBRA-02'},
-        { value: 3, name: 'OBRA-03'}
+        { value: 3, name: 'OBRA-03'},
+        { value: 4, name: 'OBRA-04'},
+        { value: 5, name: 'OBRA-05'}
       ]
 
     return (
@@ -45,17 +47,21 @@ const Login = () => {
                     <h1>Acessar</h1>
                     <input type='text' placeholder="usuário" onChange={(e) => setUsuario(e.target.value)} ></input>
                     <input type='password' placeholder="senha" onChange={(e) => setSenha(e.target.value)}></input>
+
                     <select name="modulo">
-                        <option label=" - ESCOLHA O MODULO - " />
-                        <option label="CADASTROS" />
-                        <option label="FINANCEIRO" />
-                        <option label="ESTOQUE/CUSTOS" />
-                        <option label="MAO-DE-OBRA" />
+                        <option id={0} value={0} label=" - ESCOLHA O MODULO - " />
+                        <option id={1} value={1} label="CADASTROS" />
+                        <option id={2} value={2} label="FINANCEIRO" />
+                        <option id={3} value={3} label="ESTOQUE/CUSTOS" />
+                        <option id={4} value={4} label="MAO-DE-OBRA" />
                     </select>
+
                     <select name="obra">
-                        <option label=" - ESCOLHA A OBRA - " />
-                        <option label="obra 01" />
-                        <option label="obra 02" />
+                        {
+                            obrasSelect.map( obraItem => (
+                                <option id={obraItem.value} value={obraItem.value} label={obraItem.name} />
+                            ) )
+                        }
                     </select>
                     <button type='submit' >{loading?'Acessando...': 'Acessar'}</button>
                 </form>

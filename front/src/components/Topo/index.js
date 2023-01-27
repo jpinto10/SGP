@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import usuario from '../../assets/usuario.png'
 import './style.css';
@@ -8,13 +8,16 @@ import { AuthContext } from '../../contexts/auth';
 
 const Topo = () => {
 
-  const { user, signed, signOut } = useContext(AuthContext);
+  // const { user, signed, signOut } = useContext(AuthContext);
+  const { user, signOut } = useContext(AuthContext);
+  const [signed, setSigned] = useState(false)
   
   const isAdm = (user && user.Admin)
 
   const handleLogout = ()=>{
     signOut()
   }
+
 
   return (
     <header className="topo">
@@ -30,7 +33,7 @@ const Topo = () => {
           <Link className="topo-link" to="/">Home</Link>
           {signed && 
             <>
-            <Link className="topo-link" to="/apontamento">Apontamento</Link>
+              <Link className="topo-link" to="/">Troca Mudulo/Obra</Link>
             </>
           }
 
@@ -45,7 +48,6 @@ const Topo = () => {
             <Link className="topo-link" to="/usuarios">Usuarios</Link>
             </>
           }
-          <Link className="topo-link" to="/">Troca Mudulo/Obra</Link>
 
         </nav>
       </div>
