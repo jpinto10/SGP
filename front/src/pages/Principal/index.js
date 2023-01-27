@@ -1,22 +1,24 @@
 import React from 'react';
 import './index.css';
 import Logo from '../../assets/CMS.png';
+import Topo from '../../components/Topo';
+import Rodape from '../../components/Rodape';
 
 
 const Principal = (props) => {
     return (
             <div className='principal-container'>
                 <div className='cabec'>
-                    cabec
+                    <Topo/>
                 </div>
                 
-                <div className='body'>
-                    <img src={Logo} alt='Logo da empresa'/>
+                <div className='body1'>
+                    <img className='imgPrincipal' src={Logo} alt='Logo da empresa'/>
                     {props.children}
                 </div>
                 
                 <div className='rodape'>
-                    rodape
+                    <Rodape/>
                 </div>
             </div>
       );

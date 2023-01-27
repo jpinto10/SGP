@@ -1,0 +1,9 @@
+.rodaPe-conteudo{
+    color: var(--cinza-600);
+    max-width: 1024px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    margin: 0 auto;
+}

@@ -5,6 +5,8 @@ import { AuthContext } from "../../contexts/auth";
 import Logo from '../../assets/CMS.png';
 import './index.css';
 
+import Principal from "../Principal";
+
 const Login = () => {
 
     const [usuario, setUsuario] = useState('');
@@ -20,10 +22,11 @@ const Login = () => {
     
 
     return (
-        <div className='principal'>
-            <div className='login01 tootip'>
+        // <div className='principal'>
+        <Principal>
+            {/* <div className='login01 tootip'>
                 <img src={Logo} alt='Logo Empresa' />
-            </div>
+            </div> */}
             <div className='login02'>
                 <form onSubmit={handleSubmit}>
                     <h1>Acessar</h1>
@@ -33,7 +36,8 @@ const Login = () => {
                 </form>
                 <span>Esqueceu a senha!?</span>
             </div>
-        </div>
+        </Principal>
+        // </div>
       );
 }
 

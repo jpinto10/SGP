@@ -11,16 +11,17 @@
     background-color: blue;
 }
 
-.body {
+.body1 {
     height: 100%;
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: center;
-    background-color: red;
+    background-color: var(--cinza-400);
 }
 
-.rodape {
-    display: flex;
-    justify-content: center;
-    background-color: white;
+.imgPrincipal {
+    /* opacity: 0.4;
+    filter: alpha(opacity=40); */
 }
+

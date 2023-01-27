@@ -11,7 +11,7 @@ const Rotas = () => {
     return(
         <Routes>
             <Route path='/' element={ <Home/> } />
-            <Route path='/signin' element={ <Signin/> }  />
+            <Route path='/login' element={ <Signin/> }  />
             <Route path='*' element={<NotFound/>}  />    
         </Routes>
     )

@@ -6,7 +6,7 @@
 }
 
 .login01{
-    background-color: var(--cinza-400);
+    background-color: var(--cinza-500);
     height: 35%;
     width: 25%;
     display: flex;
@@ -32,7 +32,7 @@
 }
 
 .login02{
-    background-color: var(--cinza-400);
+    background-color: var(--cinza-500);
     height: 35%;
     width: 25%;
     display: flex;
