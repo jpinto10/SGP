@@ -39,7 +39,7 @@ const Login = () => {
         // <div className='principal'>
         <Principal>
             {/* <div className='login01 tootip'>
-                <img src={Logo} alt='Logo Empresa' />
+                <img src={Logo} alt='Logo Empresa' className="imgtopo" />
             </div> */}
 
             <div className='login02'>

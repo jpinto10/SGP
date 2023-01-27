@@ -15,7 +15,6 @@
     flex-direction: column;
     margin: 5px;
     border-radius: 10px;
-
 }
 
 .login01 img{
@@ -31,6 +30,7 @@
     font-size: 14px;
 }
 
+
 .login02{
     background-color: var(--cinza-500);
     height: 48%;
@@ -41,8 +41,8 @@
     flex-direction: column;
     margin: 5px;
     border-radius: 10px;
-
 }
+
 
 .login02 h1{
     text-align: center;
