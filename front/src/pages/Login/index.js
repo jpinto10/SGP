@@ -36,7 +36,6 @@ const Login = () => {
       ]
 
     return (
-        // <div className='principal'>
         <Principal>
             {/* <div className='login01 tootip'>
                 <img src={Logo} alt='Logo Empresa' className="imgtopo" />
@@ -65,10 +64,9 @@ const Login = () => {
                     </select>
                     <button type='submit' >{loading?'Acessando...': 'Acessar'}</button>
                 </form>
-                <span>Esqueceu a senha!?</span>
+                {/* <span>Esqueceu a senha!?</span> */}
             </div>
         </Principal>
-        // </div>
       );
 }
 
