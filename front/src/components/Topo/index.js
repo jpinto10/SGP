@@ -45,6 +45,7 @@ const Topo = () => {
             <Link className="topo-link" to="/usuarios">Usuarios</Link>
             </>
           }
+          <Link className="topo-link" to="/">Troca Mudulo/Obra</Link>
 
         </nav>
       </div>
