@@ -5,13 +5,13 @@
     justify-content: center;
 }
 
-.cabec {
+.cabec_principal {
     display: flex;
     justify-content: center;
     background-color: blue;
 }
 
-.body1 {
+.body_principal {
     height: 100%;
     width: 100%;
     display: flex;
@@ -19,6 +19,13 @@
     justify-content: center;
     background-color: var(--cinza-400);
 }
+
+.rodape_principal {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+} 
+
 
 .imgPrincipal {
     /* opacity: 0.4;

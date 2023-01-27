@@ -8,16 +8,16 @@ import Rodape from '../../components/Rodape';
 const Principal = (props) => {
     return (
             <div className='principal-container'>
-                <div className='cabec'>
+                <div className='cabec_principal'>
                     <Topo/>
                 </div>
                 
-                <div className='body1'>
+                <div className='body_principal'>
                     <img className='imgPrincipal' src={Logo} alt='Logo da empresa'/>
                     {props.children}
                 </div>
                 
-                <div className='rodape'>
+                <div className='rodape_principal'>
                     <Rodape/>
                 </div>
             </div>
