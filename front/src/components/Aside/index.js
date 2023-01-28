@@ -11,20 +11,17 @@ const Aside = () =>{
  
     return (
       <>
-        <IconContext.Provider value={{ color: '#fff' }}>
-            <ul className='nav-menu-items' >
-              {SidebarData.map((item, index) => {
-                return (
-                  <li key={index} className={item.cName}>
-                    <Link to={item.path}>
-                      {item.icon}
-                      <span>{item.title}</span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-        </IconContext.Provider>
+        <ul className='nav-menu-items' >
+          {SidebarData.map((item, index) => {
+            return (
+              <li key={index} className={item.cName}>
+                <Link to={item.path}>
+                  <span>{item.title}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </>
     );
   }

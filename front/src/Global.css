@@ -27,7 +27,7 @@ body, html, #root {
 }
   
 body {
-    background: var(--cinza-700);
+    /* background: var(--cinza-700); */
     color: var(--cinza-300);
 }
 
