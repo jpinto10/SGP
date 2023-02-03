@@ -17,11 +17,22 @@ const Login = () => {
 
     const [modulo, setModulo] = useState('')
     const [obra, setObras] = useState('')
+
+    //função para pegar a opção de escolha de obra.. no select
+    function hendleObra(e){
+        e.preventDefault();
+        setObras(e.target.value)
+    }
     
+    //função para pegar a opção de módulo.. no select
+    function hendleModulo(e){
+        e.preventDefault();
+        setModulo(e.target.value)
+    }
+
     async function handleSubmit(e){
         e.preventDefault();
-        debugger
-        
+        debugger        
         if(usuario.length===0){
             toast("Usuário não Digitado.... Não seguiremos", {
                 theme:"colored",
@@ -83,7 +94,7 @@ const Login = () => {
                     <input type='text' placeholder="usuário" onChange={(e) => setUsuario(e.target.value)} ></input>
                     <input type='password' placeholder="senha" onChange={(e) => setSenha(e.target.value)}></input>
 
-                    <select name="modulo" onChange={(e)=>setObras(e.target.value) } >
+                    <select name="modulo" onChange={hendleObra} >
                         <option id={0} value={0} label=" - ESCOLHA O MODULO - " />
                         <option id={1} value={1} label="CADASTROS" />
                         <option id={2} value={2} label="FINANCEIRO" />
@@ -91,7 +102,7 @@ const Login = () => {
                         <option id={4} value={4} label="MAO-DE-OBRA" />
                     </select>
 
-                    <select name="obra" onChange={(e)=>e.target.value} >
+                    <select name="obra" onChange={hendleModulo} >
                         {
                             obrasSelect.map( obraItem => (
                                 <option id={obraItem.value} value={obraItem.value} label={obraItem.name} />

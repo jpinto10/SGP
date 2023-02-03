@@ -33,10 +33,10 @@ function AuthProvider({ children }){
     }, [])
 
   //função que valida o usuário autenticado
-  async function signIn(usuario, senha){
+  async function signIn(usuario, senha, modulo, obra){
     //debugger
     setLoading(true)
-    const ativo = await conect.login(usuario, senha)
+    const ativo = await conect.login(usuario, senha, modulo, obra)
     if(ativo.auth){
       toast.success(`Bem vindo.. ${ativo.dadosUser.nome} -  ${ativo.dadosUser.loja}`);
       setUser(ativo.dadosUser);
