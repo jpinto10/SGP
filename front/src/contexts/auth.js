@@ -14,7 +14,6 @@ function AuthProvider({ children }){
   const [urlImagemUser, setUrlImagemUser] = useState('')
 
   useEffect(()=>{
-      // debugger
       //verifica se existe o usuário quando entrar na aplicação. Procurando o item = SistemaUser
       const storageUser = localStorage.getItem('SistemaUser');
       if(storageUser){
@@ -51,22 +50,10 @@ function AuthProvider({ children }){
       setLoading(false);
   }
 
-  //função de gravação dos usuários!
-  async function garvarUsuarios(nome, email, senha, trocaSenha, isAdmin, funcao, urlImagem, isBloqueado, loja){
-    const isGravado = await conect.salvarUsuario(nome, email, senha, trocaSenha, isAdmin, funcao, urlImagem, isBloqueado, loja)
-    if(isGravado.gravado){
-      toast.success(`Usuario ${isGravado._nome} Gravado com sucesso`)
-    }else{
-      toast.error('Erro na gravação, acione a TI')
-    }
-  }
-    
   //função criada para setar os dados do usuário na variável SistemaUser
   function storageUser(data){
-    // debugger
     localStorage.setItem('SistemaUser', JSON.stringify(data));
   }
-
 
   async function signOut(){
     toast.success(`Até Logo..`)
@@ -79,16 +66,18 @@ function AuthProvider({ children }){
   return(
     <AuthContext.Provider 
       value={{ 
+        //variáveis
         signed,  
         user, 
         loading,
+        tituloBotao, 
+        urlImagemUser,
+
+        //funções
         signIn,
         signOut,
-        garvarUsuarios,
-        tituloBotao, 
         setUser,
-        setsigned,
-        urlImagemUser
+        setsigned
       }}
     >
       {children}

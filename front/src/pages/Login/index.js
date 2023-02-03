@@ -2,6 +2,8 @@ import {useContext, useEffect, useState} from "react";
 import React from "react";
 import { AuthContext } from "../../contexts/auth";
 
+import { ToastContainer, toast  } from 'react-toastify';
+
 import Logo from '../../assets/CMS.png';
 import './index.css';
 
@@ -13,12 +15,46 @@ const Login = () => {
     const [senha, setSenha] = useState('');
     const { signIn, loading } = useContext(AuthContext);
 
+    const [modulo, setModulo] = useState('')
     const [obra, setObras] = useState('')
     
     async function handleSubmit(e){
         e.preventDefault();
         debugger
-        await signIn(usuario, senha);
+        
+        if(usuario.length===0){
+            toast("Usuário não Digitado.... Não seguiremos", {
+                theme:"colored",
+                position:"top-center",
+                type:toast.TYPE.ERROR
+            })
+        }
+
+        if(senha.length===0){
+            toast("Senha não Digitada.... Não seguiremos", {
+                theme:"colored",
+                position:"top-center",
+                type:toast.TYPE.ERROR
+            })
+        }
+
+        if(modulo.length===0){
+            toast("Mudulo não escolhido.... Não seguiremos", {
+                theme:"colored",
+                position:"top-center",
+                type:toast.TYPE.ERROR
+            })
+        }
+
+        if(obra.length===0){
+            toast("Usuário não Digitado.... Não seguiremos", {
+                theme:"colored",
+                position:"top-center",
+                type:toast.TYPE.ERROR
+            })
+        }
+
+        await signIn(usuario, senha, modulo, obra);
         window.location.href = '/'
     };
 
@@ -47,7 +83,7 @@ const Login = () => {
                     <input type='text' placeholder="usuário" onChange={(e) => setUsuario(e.target.value)} ></input>
                     <input type='password' placeholder="senha" onChange={(e) => setSenha(e.target.value)}></input>
 
-                    <select name="modulo">
+                    <select name="modulo" onChange={(e)=>setObras(e.target.value) } >
                         <option id={0} value={0} label=" - ESCOLHA O MODULO - " />
                         <option id={1} value={1} label="CADASTROS" />
                         <option id={2} value={2} label="FINANCEIRO" />
@@ -55,7 +91,7 @@ const Login = () => {
                         <option id={4} value={4} label="MAO-DE-OBRA" />
                     </select>
 
-                    <select name="obra">
+                    <select name="obra" onChange={(e)=>e.target.value} >
                         {
                             obrasSelect.map( obraItem => (
                                 <option id={obraItem.value} value={obraItem.value} label={obraItem.name} />
