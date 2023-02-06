@@ -79,7 +79,28 @@ const Login = () => {
         { value: 2, name: 'OBRA-02'},
         { value: 3, name: 'OBRA-03'},
         { value: 4, name: 'OBRA-04'},
-        { value: 5, name: 'OBRA-05'}
+        { value: 1, name: 'OBRA-05'},
+        { value: 2, name: 'OBRA-06'},
+        { value: 3, name: 'OBRA-07'},
+        { value: 4, name: 'OBRA-08'},
+        { value: 1, name: 'OBRA-09'},
+        { value: 2, name: 'OBRA-10'},
+        { value: 3, name: 'OBRA-11'},
+        { value: 4, name: 'OBRA-12'},
+        { value: 5, name: 'OBRA-13'},
+        { value: 1, name: 'OBRA-14'},
+        { value: 2, name: 'OBRA-15'},
+        { value: 3, name: 'OBRA-16'},
+        { value: 4, name: 'OBRA-17'},
+        { value: 1, name: 'OBRA-18'},
+        { value: 2, name: 'OBRA-19'},
+        { value: 3, name: 'OBRA-20'},
+        { value: 4, name: 'OBRA-21'},
+        { value: 1, name: 'OBRA-22'},
+        { value: 2, name: 'OBRA-23'},
+        { value: 3, name: 'OBRA-24'},
+        { value: 4, name: 'OBRA-25'},
+        { value: 5, name: 'OBRA-26'}        
       ]
 
     return (

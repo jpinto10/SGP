@@ -10,7 +10,7 @@ routers.get('/', function(req, res) {
 });
 
 routers.post('/login', async function(req, res) {
-    const sql = `SELECT * FROM SGP.dbo.USUARIOS WHERE usuario = '${req.body.email}' AND senha = '${req.body.senha}' `
+    const sql = `SELECT * FROM SGP.dbo.USUARIOS WHERE usuario = '${req.body.usuario}' AND senha = '${req.body.senha}' AND ativo = 'SIM' `
     const rows = await conn.dbConect(sql)
 
     if (rows.recordset.length) {
