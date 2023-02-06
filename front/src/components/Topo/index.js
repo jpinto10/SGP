@@ -8,16 +8,12 @@ import { AuthContext } from '../../contexts/auth';
 
 const Topo = () => {
 
-  // const { user, signed, signOut } = useContext(AuthContext);
-  const { user, signOut } = useContext(AuthContext);
-  const [signed, setSigned] = useState(false)
-  
-  const isAdm = (user && user.Admin)
+  const { user, signOut, signed } = useContext(AuthContext);
+  const isAdm = (user && user.adm)
 
   const handleLogout = ()=>{
     signOut()
   }
-
 
   return (
     <header className="topo">
@@ -25,7 +21,7 @@ const Topo = () => {
         <div className="topo-logo-box" to="/">
           <img onClick={handleLogout} className="topo-avatar" src={usuario} alt="usuário" title="usuario"/>
             {signed && 
-              <p className="topo-nome-usuario">{' ' + user.nome + ' - ' + user.loja}</p>
+              <p className="topo-nome-usuario">{'  - ' + user.nome }</p>
             }
         </div>
 
@@ -33,7 +29,7 @@ const Topo = () => {
           <Link className="topo-link" to="/">Home</Link>
           {signed && 
             <>
-              <Link className="topo-link" to="/">Troca Mudulo/Obra</Link>
+              <Link className="topo-link" to="/">Trocar Módulo/Obra</Link>
             </>
           }
 

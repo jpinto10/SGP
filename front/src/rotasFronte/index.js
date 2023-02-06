@@ -7,7 +7,6 @@ import NotFound from '../pages/NotFound';
 import Home from '../pages/Principal'
 
 const Rotas = () => {
-    debugger
     return(
         <Routes>
             <Route path='/' element={ <Home/> } />

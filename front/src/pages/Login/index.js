@@ -16,16 +16,18 @@ const Login = () => {
     const { signIn, loading } = useContext(AuthContext);
 
     const [modulo, setModulo] = useState('')
-    const [obra, setObras] = useState('')
+    const [obra, setObra] = useState('')
 
     //função para pegar a opção de escolha de obra.. no select
     function hendleObra(e){
+        debugger
         e.preventDefault();
-        setObras(e.target.value)
+        setObra(e.target.value)
     }
     
     //função para pegar a opção de módulo.. no select
     function hendleModulo(e){
+        debugger
         e.preventDefault();
         setModulo(e.target.value)
     }
@@ -70,7 +72,7 @@ const Login = () => {
     };
 
     useEffect(()=>{
-        setObras(obrasSelect)
+        // setObras(obrasSelect)
     },[])
     
     const obrasSelect = [
@@ -79,28 +81,28 @@ const Login = () => {
         { value: 2, name: 'OBRA-02'},
         { value: 3, name: 'OBRA-03'},
         { value: 4, name: 'OBRA-04'},
-        { value: 1, name: 'OBRA-05'},
-        { value: 2, name: 'OBRA-06'},
-        { value: 3, name: 'OBRA-07'},
-        { value: 4, name: 'OBRA-08'},
-        { value: 1, name: 'OBRA-09'},
-        { value: 2, name: 'OBRA-10'},
-        { value: 3, name: 'OBRA-11'},
-        { value: 4, name: 'OBRA-12'},
-        { value: 5, name: 'OBRA-13'},
-        { value: 1, name: 'OBRA-14'},
-        { value: 2, name: 'OBRA-15'},
-        { value: 3, name: 'OBRA-16'},
-        { value: 4, name: 'OBRA-17'},
-        { value: 1, name: 'OBRA-18'},
-        { value: 2, name: 'OBRA-19'},
-        { value: 3, name: 'OBRA-20'},
-        { value: 4, name: 'OBRA-21'},
-        { value: 1, name: 'OBRA-22'},
-        { value: 2, name: 'OBRA-23'},
-        { value: 3, name: 'OBRA-24'},
-        { value: 4, name: 'OBRA-25'},
-        { value: 5, name: 'OBRA-26'}        
+        { value: 5, name: 'OBRA-05'},
+        { value: 6, name: 'OBRA-06'},
+        { value: 7, name: 'OBRA-07'},
+        { value: 8, name: 'OBRA-08'},
+        { value: 9, name: 'OBRA-09'},
+        { value: 10, name: 'OBRA-10'},
+        { value: 11, name: 'OBRA-11'},
+        { value: 12, name: 'OBRA-12'},
+        { value: 13, name: 'OBRA-13'},
+        { value: 14, name: 'OBRA-14'},
+        { value: 15, name: 'OBRA-15'},
+        { value: 16, name: 'OBRA-16'},
+        { value: 17, name: 'OBRA-17'},
+        { value: 18, name: 'OBRA-18'},
+        { value: 19, name: 'OBRA-19'},
+        { value: 20, name: 'OBRA-20'},
+        { value: 21, name: 'OBRA-21'},
+        { value: 22, name: 'OBRA-22'},
+        { value: 23, name: 'OBRA-23'},
+        { value: 24, name: 'OBRA-24'},
+        { value: 25, name: 'OBRA-25'},
+        { value: 26, name: 'OBRA-26'}        
       ]
 
     return (
@@ -115,15 +117,15 @@ const Login = () => {
                     <input type='text' placeholder="usuário" onChange={(e) => setUsuario(e.target.value)} ></input>
                     <input type='password' placeholder="senha" onChange={(e) => setSenha(e.target.value)}></input>
 
-                    <select name="modulo" onChange={hendleObra} >
-                        <option id={0} value={0} label=" - ESCOLHA O MODULO - " />
-                        <option id={1} value={1} label="CADASTROS" />
-                        <option id={2} value={2} label="FINANCEIRO" />
-                        <option id={3} value={3} label="ESTOQUE/CUSTOS" />
-                        <option id={4} value={4} label="MAO-DE-OBRA" />
+                    <select name="modulo" onChange={hendleModulo} >
+                        <option id={0} value={''} label=" - ESCOLHA O MODULO - " />
+                        <option id={1} value={'menuCadastro'} label="CADASTROS" />
+                        <option id={2} value={'menuFinanceiro'} label="FINANCEIRO" />
+                        <option id={3} value={'menuEstoque'} label="ESTOQUE/CUSTOS" />
+                        <option id={4} value={'menuMaoDeObra'} label="MAO-DE-OBRA" />
                     </select>
 
-                    <select name="obra" onChange={hendleModulo} >
+                    <select name="obra" onChange={hendleObra} >
                         {
                             obrasSelect.map( obraItem => (
                                 <option id={obraItem.value} value={obraItem.value} label={obraItem.name} />

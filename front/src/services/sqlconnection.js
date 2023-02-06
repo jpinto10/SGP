@@ -17,8 +17,6 @@ export default () => {
 
         login: async(usuario, senha, modulo, obra) => {
             let json = await requisicao('post', '/login', { usuario, senha, modulo, obra });
-            console.log(json);
-            debugger
             return json;
         },
 

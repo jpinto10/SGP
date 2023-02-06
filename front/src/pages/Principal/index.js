@@ -6,13 +6,14 @@ import Rodape from '../../components/Rodape';
 import Aside from '../../components/Aside';
 
 const Principal = (props) => {
+
     return (
             <div className='principal-container'>
                 <div >
                     <Topo/>
                 </div>
                 <div >
-                    <Aside/>
+                    <Aside />
                 </div>
                 <div className='body_principal'>
                     <img className='imgPrincipal' src={Logo} alt='Logo da empresa'/>

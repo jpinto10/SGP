@@ -10,18 +10,21 @@ function AuthProvider({ children }){
   const [loading, setLoading] = useState(true);
   const [signed, setsigned] = useState(false);
   const [tituloBotao, setTituloBotao] = useState('Login')
+  const [moduloLogado, setModuloLogado] = useState('')
 
   const [urlImagemUser, setUrlImagemUser] = useState('')
 
   useEffect(()=>{
       //verifica se existe o usuário quando entrar na aplicação. Procurando o item = SistemaUser
       const storageUser = localStorage.getItem('SistemaUser');
+      debugger
       if(storageUser){
         setTituloBotao('Home')
         setUser(JSON.parse(storageUser));
         setLoading(false);
         setsigned(true);
         setUrlImagemUser(JSON.parse(storageUser).imagem)
+        setModuloLogado(JSON.parse(storageUser).modulo)
       } else{
         setUser('Visitante');
         setTituloBotao('Login');
@@ -30,20 +33,29 @@ function AuthProvider({ children }){
         setUrlImagemUser('')
       }
 
-    }, [])
+    }, [moduloLogado])
 
   //função que valida o usuário autenticado
   async function signIn(usuario, senha, modulo, obra){
-    //debugger
+    debugger
     setLoading(true)
     const ativo = await conect.login(usuario, senha, modulo, obra)
     if(ativo.auth){
-      toast.success(`Bem vindo.. ${ativo.dadosUser.nome} -  ${ativo.dadosUser.loja}`);
-      setUser(ativo.dadosUser);
-      storageUser(ativo.dadosUser);
+      debugger  
+      let userAtivo = {...ativo.dadosUser, modulo, obra }
+      setUser(userAtivo);
+      storageUser(userAtivo);
       setLoading(false);
       setsigned(true);
       setTituloBotao('Home')
+      setModuloLogado(modulo)
+
+      toast(`Bem vindo.. ${ativo.dadosUser.nome} `, {
+        theme:"colored",
+        position:"top-center",
+        type:toast.TYPE.SUCCESS
+      })  
+
     } else{   
       toast.error('Dados inválidos, tente novamente por favor');
     }
@@ -72,12 +84,13 @@ function AuthProvider({ children }){
         loading,
         tituloBotao, 
         urlImagemUser,
+        moduloLogado,
 
         //funções
         signIn,
         signOut,
         setUser,
-        setsigned
+        setsigned, 
       }}
     >
       {children}
