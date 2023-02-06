@@ -53,7 +53,7 @@ function AuthProvider({ children }){
       toast(`Bem vindo.. ${ativo.dadosUser.nome} `, {
         theme:"colored",
         position:"top-center",
-        type:toast.TYPE.SUCCESS
+        autoClose: 1000
       })  
 
     } else{   

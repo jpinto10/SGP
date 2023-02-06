@@ -13,7 +13,7 @@ const Login = () => {
 
     const [usuario, setUsuario] = useState('');
     const [senha, setSenha] = useState('');
-    const { signIn, loading } = useContext(AuthContext);
+    const { signIn, loading, user } = useContext(AuthContext);
 
     const [modulo, setModulo] = useState('')
     const [obra, setObra] = useState('')
