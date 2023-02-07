@@ -6,19 +6,19 @@ import * as IoIcons from 'react-icons/io';
 export const menuEstoque = [
     {
         title:'Doc. Entrada',
-        path:"/Home",
+        path:"/DocEntrada",
         icon:<AiIcons.AiFillHome/>,
         cName: 'nav-text'
     },
     {
         title:'Doc. Saida',
-        path:"/Products",
+        path:"/DocSaida",
         icon:<IoIcons.IoIosPaper />,
         cName: 'nav-text'
     },
     {
         title:'Mov. Estoque',
-        path:"/Reports",
+        path:"/MovEstoque",
         icon:<FaIcons.FaCartPlus />,
         cName:'nav-text'
     }

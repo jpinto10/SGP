@@ -6,13 +6,13 @@ import * as IoIcons from 'react-icons/io';
 export const menuMaoDeObra = [
     {
         title:'Horas Trabalhadas',
-        path:"/Home",
+        path:"/HorasTrabalhadas",
         icon:<AiIcons.AiFillHome/>,
         cName: 'nav-text'
     },
     {
         title:'Equipes',
-        path:"/Products",
+        path:"/Equipes",
         icon:<IoIcons.IoIosPaper />,
         cName: 'nav-text'
     }
