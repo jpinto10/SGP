@@ -16,7 +16,9 @@ const Principal = (props) => {
                     <Aside />
                 </div>
                 <div className='body_principal'>
+                    { !props.grid &&
                     <img className='imgPrincipal' src={Logo} alt='Logo da empresa'/>
+                    }
                     {props.children}
                 </div>
                 

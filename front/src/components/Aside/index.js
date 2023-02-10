@@ -13,7 +13,7 @@ import { menuMaoDeObra } from './menuMaoDeObra';
 
 const Aside = () =>{
     const { moduloLogado } = useContext(AuthContext);
-    debugger
+    // debugger
 
     return (
       <>

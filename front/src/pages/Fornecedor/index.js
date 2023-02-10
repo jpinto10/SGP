@@ -16,8 +16,32 @@ const Fornecedor = () => {
     const [senha, setSenha] = useState('');
     const { signIn, loading, user } = useContext(AuthContext);
 
-    const [adados, setAdados] = useState([
+    const [btInc, setInc]           = useState(true)
+    const [btAlt, setAlt]           = useState(true)
+    const [btExc, setExc]           = useState(true)
+    const [btnConsult, setConsult]  = useState(true)
 
+
+    const [adados, setAdados] = useState([
+        {id: '1' , value: 'AAAAAA', btAlt,  btExc,  btnConsult},
+        {id: '2' , value: 'BBBBBB', btAlt,  btExc,  btnConsult},
+        {id: '3' , value: 'CCCCCC', btAlt,  btExc,  btnConsult},
+        {id: '4' , value: 'DDDDDD', btAlt,  btExc,  btnConsult},
+        {id: '5' , value: 'EEEEEE', btAlt,  btExc,  btnConsult},
+        {id: '6' , value: 'FFFFFF', btAlt,  btExc,  btnConsult},
+        {id: '7' , value: 'GGGGGG', btAlt,  btExc,  btnConsult},
+        {id: '8' , value: 'HHHHHH', btAlt,  btExc,  btnConsult}      
+    ])
+  
+    const [cabec, setCabec] = useState([
+        { id: '1',  value: 'Código'},
+        { id: '2',  value: 'Nome Fornecedor'},
+        { id: '3',  value: 'Fone' },
+        { id: '4',  value: 'E-mail' },
+        { id: '5',  value: 'Dt. Ult. Compra'},
+        { id: '6',  value: 'Ultima Nota'},
+        { id: '7',  value: 'Total Comprado'},
+        { id: '8',  value: 'Ação'}
     ])
 
     const [modulo, setModulo] = useState('')
@@ -78,8 +102,8 @@ const Fornecedor = () => {
 
    
     return (
-        <Principal>
-            <Grid data={adados}/>
+        <Principal grid={true} >
+            <Grid  cabec={cabec} adados={adados} btInc />
         </Principal>
       );
 }

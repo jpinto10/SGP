@@ -7,12 +7,18 @@ import { TiUserAdd } from "react-icons/ti";
 
 import Buttao from "../Buttao";
 
-const Grid = ({data, btInc, btAlt,  btExc,  btnConsult })=>{
+export default function Grid( {
+    //Parâmetros
+    cabec, 
+    adados, 
+    btInc, 
+    ...rest
+    }){
     const [dados, setDados] = useState([]);
     const [botInclusao, setBotInclusao] = useState(btInc);
-    const [botAlteracao, setBotAlteracao] = useState(btAlt);
-    const [botExclusao, setBotExclusao] = useState(btExc);
-    const [botConsulta, setBotConsulta] = useState(btnConsult);
+    const [botAlteracao, setBotAlteracao] = useState(true);
+    const [botExclusao, setBotExclusao] = useState(true);
+    const [botConsulta, setBotConsulta] = useState(true);
     const [validaLinha, setValidaLinha] = useState(true);
     const [modo, setModo] = useState('');
 
@@ -29,7 +35,8 @@ const Grid = ({data, btInc, btAlt,  btExc,  btnConsult })=>{
     }    
 
     const [showModal, setShowModal] = useState(false);
-    const cabec = Object.keys(data[0])
+    debugger
+
     return(
         <Container>
             <table>
@@ -37,12 +44,12 @@ const Grid = ({data, btInc, btAlt,  btExc,  btnConsult })=>{
                     {botInclusao && <Buttao corFundo={'#00FF00'} click={inclus}  Children={<TiUserAdd color='#fff' size={25}/> }  /> }
                     <tr>
                         {
-                            cabec.map(cabItem => <th key={cabItem}>{cabItem.toLocaleUpperCase()}</th> )
+                            cabec.map(cabItem => <th key={cabItem}>{cabItem.value}</th> )
                         }
                     </tr>
                 </thead>
                 <tbody>
-                    { data.map(linha => <Row record={linha} modal={modal} />)  }   
+                    { adados.map(linha => <Row record={linha} />)  }   
                 </tbody>                           
 
             </table>
@@ -56,20 +63,20 @@ const Grid = ({data, btInc, btAlt,  btExc,  btnConsult })=>{
     )
 };
 
-const Row = ({record, modal, bt01, bt02, bt03}) =>{
+const Row = ({record}) =>{
     
     const keys = Object.keys(record)
-    const dData = record
     return(
-        <tr key={record.matricula}>
+        <tr key={record.id}>
             {
                 keys.map( key => 
-                    key === 'Acao' ? (
-                        <td key={key} > 
-                            { bt01 && <Buttao corFundo={'#f30707'} click={()=>modal(record, 'edit')} Children={<FiEdit2 color='#fff' size={15}/> }  /> }                          
-                            { bt02 && <Buttao corFundo={'#629bf0'} click={()=>modal(record, 'show')} Children={<FiEye color='#1b3675' size={15}/> } />  }                                    
-                            { bt03 && <Buttao corFundo={'#f0a351'} click={()=>modal(record, 'show')} Children={<IoMdPulse color='#1b3675' size={15}/> } />  }                                    
-                        </td>) : (<td key={key} > {record[key]} </td> )
+                    // key === 'Acao' ? (
+                    //     <td key={key} > 
+                    //         { bt01 && <Buttao corFundo={'#f30707'} click={()=>modal(record, 'edit')} Children={<FiEdit2 color='#fff' size={15}/> }  /> }                          
+                    //         { bt02 && <Buttao corFundo={'#629bf0'} click={()=>modal(record, 'show')} Children={<FiEye color='#1b3675' size={15}/> } />  }                                    
+                    //         { bt03 && <Buttao corFundo={'#f0a351'} click={()=>modal(record, 'show')} Children={<IoMdPulse color='#1b3675' size={15}/> } />  }                                    
+                    //     </td>) : 
+                        (<td key={key} > {record.value} </td> )
                 )
             }
             
@@ -79,5 +86,3 @@ const Row = ({record, modal, bt01, bt02, bt03}) =>{
     )
 
 }
-
-export default Grid
