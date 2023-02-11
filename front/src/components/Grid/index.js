@@ -7,6 +7,20 @@ import { TiUserAdd } from "react-icons/ti";
 
 import Buttao from "../Buttao";
 
+
+//componente de impressão das informações - relacionado com o componente de tabela
+const Row = ({linha})=>{
+    const keys = Object.keys(linha)
+    return(
+        <tr key={linha.id}>
+            {
+                keys.map(key => ( <td key={key}>{linha[key]}</td> ))
+            }
+            
+        </tr>
+    )
+}
+
 export default function Grid( {
     //Parâmetros
     cabec, 
@@ -35,8 +49,6 @@ export default function Grid( {
     }    
 
     const [showModal, setShowModal] = useState(false);
-    debugger
-
     return(
         <Container>
             <table>
@@ -49,7 +61,11 @@ export default function Grid( {
                     </tr>
                 </thead>
                 <tbody>
-                    { adados.map(linha => <Row record={linha} />)  }   
+                    
+                    { 
+                        adados.map(linha => { return( <Row linha={linha} />  )  })
+                    }
+
                 </tbody>                           
 
             </table>
@@ -63,26 +79,3 @@ export default function Grid( {
     )
 };
 
-const Row = ({record}) =>{
-    
-    const keys = Object.keys(record)
-    return(
-        <tr key={record.id}>
-            {
-                keys.map( key => 
-                    // key === 'Acao' ? (
-                    //     <td key={key} > 
-                    //         { bt01 && <Buttao corFundo={'#f30707'} click={()=>modal(record, 'edit')} Children={<FiEdit2 color='#fff' size={15}/> }  /> }                          
-                    //         { bt02 && <Buttao corFundo={'#629bf0'} click={()=>modal(record, 'show')} Children={<FiEye color='#1b3675' size={15}/> } />  }                                    
-                    //         { bt03 && <Buttao corFundo={'#f0a351'} click={()=>modal(record, 'show')} Children={<IoMdPulse color='#1b3675' size={15}/> } />  }                                    
-                    //     </td>) : 
-                        (<td key={key} > {record.value} </td> )
-                )
-            }
-            
-        </tr>
-
-        
-    )
-
-}

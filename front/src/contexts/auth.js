@@ -37,7 +37,7 @@ function AuthProvider({ children }){
 
   //função que valida o usuário autenticado
   async function signIn(usuario, senha, modulo, obra){
-    debugger
+    // debugger
     setLoading(true)
     const ativo = await conect.login(usuario, senha, modulo, obra)
     if(ativo.auth){
