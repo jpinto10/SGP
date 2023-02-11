@@ -7,6 +7,8 @@ import { TiUserAdd } from "react-icons/ti";
 
 import Buttao from "../Buttao";
 
+import './style.css';
+
 
 //componente de impressão das informações - relacionado com o componente de tabela
 const Row = ({linha})=>{
@@ -69,11 +71,6 @@ export default function Grid( {
                 </tbody>                           
 
             </table>
-
-            {/* { showModal && 
-                <ModalApontamento dadosApont = {dadosApontamento} close={handleClose} cEditouShow={modo} />
-            } */}
-            
 
         </Container>
     )
