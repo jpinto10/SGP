@@ -17,7 +17,7 @@ function AuthProvider({ children }){
   useEffect(()=>{
       //verifica se existe o usuário quando entrar na aplicação. Procurando o item = SistemaUser
       const storageUser = localStorage.getItem('SistemaUser');
-      debugger
+      // debugger
       if(storageUser){
         setTituloBotao('Home')
         setUser(JSON.parse(storageUser));
