@@ -7,7 +7,7 @@ import { TiUserAdd } from "react-icons/ti";
 
 import Buttao from "../Buttao";
 
-import './style.css';
+// import './style.css';
 
 
 //componente de impressão das informações - relacionado com o componente de tabela
@@ -71,7 +71,6 @@ export default function Grid( {
                 </tbody>                           
 
             </table>
-
         </Container>
     )
 };
