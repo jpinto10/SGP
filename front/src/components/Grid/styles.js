@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    display: flex;
-    align-content: stretch;
     color: black ;
+    /* display: flex;
+    align-content: stretch; */
     /* background-color: red ; */
-    width: 100%;
     
     > table{
         border:1px solid #ccc;
