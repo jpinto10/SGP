@@ -54,13 +54,13 @@ const Fornecedor = () => {
     ])
   
     const [cabec, setCabec] = useState([
-        { id: '1',  value: 'Código -'},
-        { id: '2',  value: 'Nome Fornecedor -'},
-        { id: '3',  value: 'Fone -' },
-        { id: '4',  value: 'E-mail -' },
-        { id: '5',  value: 'Dt. Ult. Compra -'},
-        { id: '6',  value: 'Ultima Nota -'},
-        { id: '7',  value: 'Total Comprado -'},
+        { id: '1',  value: 'Código'},
+        { id: '2',  value: 'Nome Fornecedor '},
+        { id: '3',  value: 'Fone ' },
+        { id: '4',  value: 'E-mail' },
+        { id: '5',  value: 'Dt. Ult. Compra '},
+        { id: '6',  value: 'Ultima Nota '},
+        { id: '7',  value: 'Total Comprado '},
         { id: '8',  value: 'Ação'},
         { id: '8',  value: ''},
         { id: '8',  value: ''}
