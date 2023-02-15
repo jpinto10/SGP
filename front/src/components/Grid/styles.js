@@ -31,7 +31,7 @@ export const Container = styled.div`
     }
 
     >table td button{
-        /* margin-left: 4px ;
+        margin-left: 4px ;
         width: 30px ;
         height: 30px ;
         border-radius: 5px ;
@@ -44,7 +44,7 @@ export const Container = styled.div`
 
         :hover{
             transform: scale(1.1);
-        } */
+        }
 
 
     }
