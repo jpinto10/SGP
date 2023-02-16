@@ -10,6 +10,8 @@ import Logo from '../../assets/CMS.png';
 import PrincipalGrig from "../PrincipalGrid";
 import Grid from "../../components/Grid";
 
+import GrirDigitacao from '../../components/GridDigitacao'
+
 const Fornecedor = () => {
 
     const [usuario, setUsuario] = useState('');
@@ -112,6 +114,7 @@ const Fornecedor = () => {
     return (
         <PrincipalGrig grid={true} >
             <Grid  cabec={cabec} adados={adados} btInc />
+            {/* <GrirDigitacao data={cabec} /> */}
         </PrincipalGrig>
       );
 }

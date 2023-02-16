@@ -4,7 +4,7 @@ import { Container } from './styles';
 import { FiEdit2, FiEye } from 'react-icons/fi'
 import { IoMdPulse } from "react-icons/io";
 import { AiFillForward, AiFillBackward } from "react-icons/ai"
-import { TiUserAdd, TiDocumentText, TiTrash, TiEye, TiChevronRight, TiChevronLeft } from "react-icons/ti";
+import { TiUserAdd, TiDocumentText, TiTrash, TiEye, TiChevronRight, TiChevronLeft, TiPlus } from "react-icons/ti";
 
 import Buttao from "../Buttao";
 
@@ -64,7 +64,7 @@ export default function Grid( {
         <Container>
             <table>
                 <thead>
-                    {botInclusao && <Buttao corFundo={'#00FF00'} click={inclus}  Children={<TiUserAdd color='#fff' size={25}/> }  /> }
+                    {botInclusao && <Buttao corFundo={'#00FF00'} click={inclus}  Children={<TiPlus color='#504040' size={25}/> }  /> }
                     <tr>
 
                         {   
