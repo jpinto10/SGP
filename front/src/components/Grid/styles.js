@@ -7,6 +7,8 @@ export const Container = styled.div`
     /* background-color: red ; */
     
     > table{
+        margin-top: 0.03rem;
+        background-color: #f8f8f8 ;
         border:1px solid #ccc;
         border-collapse: collapse ;
         width: 100% ;
@@ -25,22 +27,21 @@ export const Container = styled.div`
         background-color: #f8f8f8 ;
         border: 1px solid #ddd;
         padding: .35em ;
-        padding: .62em ;
         text-align: justify ;
 
     }
 
-    >table td button{
+    >table button{
+        margin-top: 0.05rem;
+        margin-bottom: 0.05rem;
         margin-left: 4px ;
         width: 30px ;
         height: 30px ;
         border-radius: 5px ;
-        padding-top: 4px ;
+        padding-top: 2px ;
 
         border: 0;
-        align-items: center;
-        display: inline-block;
-        transition: .4s;
+        transition: .1s;
 
         :hover{
             transform: scale(1.1);
@@ -48,4 +49,30 @@ export const Container = styled.div`
 
 
     }
+
+    .paginacao{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        transition: .1s;
+    }
+
+    .paginacao button{
+        margin-top: 0.5rem;
+        margin-left: 4px ;
+        width: 30px ;
+        height: 30px ;
+        border-radius: 5px ;
+        padding-top: 2px ;
+        border: 1px solid;
+
+        :hover{
+                transform: scale(1.1);
+            }
+    }
+
+
+
+
 `;

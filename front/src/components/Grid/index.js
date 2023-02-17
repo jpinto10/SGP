@@ -86,11 +86,14 @@ export default function Grid( {
                         adados.map(linha => { return( <Row linha={linha} />  )  })
                     }
 
-                </tbody>                           
-                    {botInclusao && <Buttao corFundo={'#e5e5e5'} click={inclus}  Children={<AiFillForward color='#161616 ' size={25}/> }  /> }
-                    {botInclusao && <Buttao corFundo={'#e5e5e5'} click={inclus}  Children={<AiFillBackward color='#161616 ' size={25}/> }  /> }
-
+                </tbody>      
             </table>
+
+            <div className="paginacao">
+                {botInclusao && <Buttao corFundo={'#d4d4d4'} click={inclus}  Children={<AiFillBackward color='#161616 ' size={25}/> }  /> }
+                {botInclusao && <Buttao corFundo={'#d4d4d4'} click={inclus}  Children={<AiFillForward  color='#161616 ' size={25}/> }  /> }
+            </div>                     
+
         </Container>
     )
 };
