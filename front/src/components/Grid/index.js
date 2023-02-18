@@ -6,6 +6,8 @@ import { IoMdPulse } from "react-icons/io";
 import { AiFillForward, AiFillBackward } from "react-icons/ai"
 import { TiUserAdd, TiDocumentText, TiTrash, TiEye, TiChevronRight, TiChevronLeft, TiPlus } from "react-icons/ti";
 
+import Fornecedor from "../Modais/Fornecedor";
+
 import Buttao from "../Buttao";
 
 // import './style.css';
@@ -46,6 +48,8 @@ export default function Grid( {
     const [botConsulta, setBotConsulta] = useState(true);
     const [validaLinha, setValidaLinha] = useState(true);
     const [modo, setModo] = useState('');
+    
+    const [showModal, setShowModal] = useState(false);
 
     const handleClose = ()=>{
         setShowModal(!showModal)
@@ -57,9 +61,10 @@ export default function Grid( {
 
     const inclus = ()=> {
         setShowModal(!showModal)
+        // alert('cliquei')
     }    
 
-    const [showModal, setShowModal] = useState(false);
+    
     return(
         <Container>
             <table>
@@ -93,6 +98,11 @@ export default function Grid( {
                 {botInclusao && <Buttao corFundo={'#d4d4d4'} click={inclus}  Children={<AiFillBackward color='#161616 ' size={25}/> }  /> }
                 {botInclusao && <Buttao corFundo={'#d4d4d4'} click={inclus}  Children={<AiFillForward  color='#161616 ' size={25}/> }  /> }
             </div>                     
+
+
+            { showModal && 
+                <Fornecedor close={handleClose}  />
+            }
 
         </Container>
     )
