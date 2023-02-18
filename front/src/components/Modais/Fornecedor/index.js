@@ -31,16 +31,13 @@ export default function Fornecedor(props){
 
                     </TabPanel>
                     <TabPanel className='tabFinanceiro' >
-                        {/* <label>Ultma Compra</label>
-                        <input name='ultimacompra' autoComplete='off'></input>
-                        <label>Ultima Nota</label>
-                        <input name='ultimanota' autoComplete='off'></input>
-                        <label>Total Comprado</label>
-                        <input name='totalcomprado' autoComplete='off'></input>
-                        <label>Total pago</label>
-                        <input name='totalpago' autoComplete='off'></input>
-                        <label>Total a Pagar</label>
-                        <input name='totalapagar' autoComplete='off'></input> */}
+                        <div className='campos'>
+                            <Input className={'coluna1'} name={'ultimacompra'} Apresenta={'Ultima Compra'} titulo='Ultima Compra Realizada' />
+                            <Input className={'coluna1'} name={'ultimanota'} Apresenta={'Ultima Nota'} titulo = 'Ultima Nofa de Entrada Recebida'/>
+                            <Input className={'coluna1'} name={'totalcomprado'} Apresenta={'Total Comprado'} titulo='Total Comprado do Forncededor' />
+                            <Input className={'coluna1'} name={'toalpago'} Apresenta={'Total Pago'} titulo='Total Pago ao Fornecedor'/>
+                            <Input className={'coluna1'} name={'totalpagar'} Apresenta={'Total a Pagar'} titulo='Total a Pagar ao Fornecedor'/>
+                        </div>
                     </TabPanel>
                 </Tabs>
                 <div className='botao'>
