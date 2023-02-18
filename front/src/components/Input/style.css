@@ -1,0 +1,63 @@
+form {
+  overflow: hidden;
+  position: relative;
+}
+
+input {
+  color: #fff;
+  font-size: 16px;
+  width: 100%;
+  padding: 10px 5px 5px;
+  background-color: #4f4f4f;
+  border: none;
+  border-radius: 4px;
+}
+
+label {
+  color: #fff;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #ffffff;
+}
+
+strong {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 80%;
+  height: 100%;
+  border-bottom: 3px solid #e0138c;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+}
+
+input:focus{
+    background-color: var(--cinza-400);
+    color: var(--cinza-800);
+}
+
+input:focus + label strong,
+input:valid + label strong {
+  transform: translateY(-150%);
+  font-size: 14px;
+  bottom: 10px;
+  color: #e0138c;
+}
+
+input:focus + label::after,
+input:valid + label::after {
+  transform: translateX(0%);
+}

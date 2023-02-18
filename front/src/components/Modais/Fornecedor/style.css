@@ -17,6 +17,66 @@
     right: 0;
     margin: 0 auto;
     padding: 4em 2rem;
-    background-color: rgb(241, 226, 226);
+    background-color: var(--cinza-400);
     box-shadow: 0 0 20px rgba(0,0,0, 0.8);
+  }
+
+  .container h1{
+    display: flex;
+    margin-top: -2rem;
+    font-size: 1.5rem;
+    justify-content: center;
+    padding: 0.37rem;
+  }
+
+  .tabContainer {
+    margin-top: 0.56rem;
+  }
+
+  .campos {
+    display: flex;
+  }
+
+  .codigo{
+    width: 10rem;
+    margin-right: 0.78rem;
+  } 
+
+  .descricao{
+    width: 48rem;
+  } 
+
+  .botao {
+    margin-top: 0.56rem;
+    display: flex;
+    justify-content: flex-end;
+
+  }
+
+  .gravar{
+    padding: 0.46rem;
+    font-size: 0.87rem;
+    border-radius: 8px;
+    margin-right: 0.52rem;
+    transition: 0.5s;
+  }
+
+  .fechar{
+    padding: 0.46rem;
+    font-size: 0.87rem;
+    border-radius: 8px;
+    margin-right: 0.52rem;
+    transition: 0.5s;
+  }
+
+  .gravar:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: aqua;
+  }
+
+  .fechar:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: red;
   }

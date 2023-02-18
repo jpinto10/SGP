@@ -61,7 +61,6 @@ export default function Grid( {
 
     const inclus = ()=> {
         setShowModal(!showModal)
-        // alert('cliquei')
     }    
 
     
