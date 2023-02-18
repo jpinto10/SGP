@@ -1,9 +1,9 @@
 import './style.css'
 
-export default function Input({name, Apresenta}){
+export default function Input({name, Apresenta, className}){
     return(
         <form>
-            <input className={name} name={name} autocomplete="off" required />
+            <input className={className} name={name} autocomplete="off" required />
             <label for={name}>
                 <strong>{Apresenta}</strong>
             </label>

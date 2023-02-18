@@ -17,28 +17,17 @@ export default function Fornecedor(props){
                     </TabList>
                     <TabPanel className='tabAdm'>
                         <div className='campos'>
-                            <Input className={'codigo'} name={'codigo'} Apresenta={'Código'} />
-                            <Input className={'descricao'} name={'descricao'} Apresenta={'Descrição'} />
+                            <Input className={'coluna1'} name={'codigo'} Apresenta={'Código'} />
+                            <Input className={'coluna2'} name={'descricao'} Apresenta={'Descrição'} />
                         </div>
-                        {/* <div>
-                            <label>Código</label>
-                            <input name='codigo' autoComplete='off' required ></input>
-                            <label>Descrição</label>
-                            <input name='descricao' autoComplete='off' required></input>
+                        <div className='campos'>
+                            <Input className={'coluna1'} name={'contato'} Apresenta={'Contado'} />
+                            <Input className={'coluna2'} name={'email'} Apresenta={'E-mail'} />
                         </div>
-
-                        <div>
-                            <label>Contato</label>
-                            <input name='contato' autoComplete='off'></input>
-                            <label>E-mail</label>
-                            <input name='email' autoComplete='off'></input>
+                        <div className='campos'>
+                            <Input className={'coluna1'} name={'fone'} Apresenta={'Fone'} />
+                            <Input className={'coluna2'} name={'endereco'} Apresenta={'Endereço'} />
                         </div>
-                        <div>
-                            <label>Endereço</label>
-                            <input name='endereco' autoComplete='off'></input>
-                            <label>Fone</label>
-                            <input name='fone' autoComplete='off'></input>
-                        </div> */}
 
                     </TabPanel>
                     <TabPanel className='tabFinanceiro' >

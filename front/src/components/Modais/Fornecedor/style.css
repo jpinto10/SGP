@@ -19,6 +19,7 @@
     padding: 4em 2rem;
     background-color: var(--cinza-400);
     box-shadow: 0 0 20px rgba(0,0,0, 0.8);
+    border-radius: 20px;
   }
 
   .container h1{
@@ -33,16 +34,16 @@
     margin-top: 0.56rem;
   }
 
-  .campos {
+  .campos{
     display: flex;
   }
 
-  .codigo{
-    width: 10rem;
+  .coluna1{
+    width: 11rem;
     margin-right: 0.78rem;
   } 
 
-  .descricao{
+  .coluna2{
     width: 48rem;
   } 
 
