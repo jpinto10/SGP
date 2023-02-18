@@ -63,6 +63,9 @@ export default function Grid( {
         setShowModal(!showModal)
     }    
 
+    const paginacao = ()=> {
+        // setShowModal(!showModal)
+    }    
     
     return(
         <Container>
@@ -94,8 +97,8 @@ export default function Grid( {
             </table>
 
             <div className="paginacao">
-                {botInclusao && <Buttao corFundo={'#d4d4d4'} click={inclus}  Children={<AiFillBackward color='#161616 ' size={25}/> }  /> }
-                {botInclusao && <Buttao corFundo={'#d4d4d4'} click={inclus}  Children={<AiFillForward  color='#161616 ' size={25}/> }  /> }
+                {paginacao && <Buttao corFundo={'#d4d4d4'} click={paginacao}  Children={<AiFillBackward color='#161616 ' size={25}/> }  /> }
+                {paginacao && <Buttao corFundo={'#d4d4d4'} click={paginacao}  Children={<AiFillForward  color='#161616 ' size={25}/> }  /> }
             </div>                     
 
 
