@@ -23,7 +23,7 @@ const Row = ({linha, funcao})=>{
                     ( (key !== 'btAlt' && key !== 'btExc' && key !== 'btnConsult') ?
                         <td colSpan={1} key={key}>{linha[key]}</td> : key === 'btAlt' ?
                         <Buttao click={funcao} corFundo={'#f09809'} Children={<TiDocumentText color='#161616' size={25}/> } /> :
-                        key === 'btExc' ? <Buttao corFundo={'#f00909'} Children={<TiTrash color='#161616' size={25}/> } /> :
+                        key === 'btExc' ? <Buttao corFundo={'#f00909'} Children={<TiTrash color='#161616' size={25}/> } /> : 
                         key === 'btnConsult' && <Buttao corFundo={'#0922f0'} Children={<TiEye color='#fff' size={25}/> } /> 
                     ))
 
@@ -45,7 +45,7 @@ export default function Grid( {
     const [botInclusao, setBotInclusao] = useState(btInc);
     const [botAlteracao, setBotAlteracao] = useState(true);
     const [botExclusao, setBotExclusao] = useState(true);
-    const [botConsulta, setBotConsulta] = useState(true);
+    const [botConsulta, setBotConsulta] = useState(false);
     const [validaLinha, setValidaLinha] = useState(true);
     const [modo, setModo] = useState('');
     
