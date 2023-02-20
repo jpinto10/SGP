@@ -14,7 +14,7 @@ import Buttao from "../Buttao";
 
 
 //componente de impressão das informações - relacionado com o componente de tabela
-const Row = ({linha})=>{
+const Row = ({linha, funcao})=>{
     const keysItens = Object.keys(linha)
     return(
         <tr key={linha.codigo}>
@@ -22,7 +22,7 @@ const Row = ({linha})=>{
                 keysItens.map( key =>
                     ( (key !== 'btAlt' && key !== 'btExc' && key !== 'btnConsult') ?
                         <td colSpan={1} key={key}>{linha[key]}</td> : key === 'btAlt' ?
-                        <Buttao corFundo={'#f09809'} Children={<TiDocumentText color='#161616' size={25}/> } /> :
+                        <Buttao click={funcao} corFundo={'#f09809'} Children={<TiDocumentText color='#161616' size={25}/> } /> :
                         key === 'btExc' ? <Buttao corFundo={'#f00909'} Children={<TiTrash color='#161616' size={25}/> } /> :
                         key === 'btnConsult' && <Buttao corFundo={'#0922f0'} Children={<TiEye color='#fff' size={25}/> } /> 
                     ))
@@ -90,7 +90,7 @@ export default function Grid( {
                 <tbody>
                     
                     { 
-                        adados.map(linha => { return( <Row linha={linha} />  )  })
+                        adados.map(linha => { return( <Row funcao={inclus} linha={linha} />  )  })
                     }
 
                 </tbody>      
