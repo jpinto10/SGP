@@ -9,7 +9,7 @@ export default function Fornecedor(props){
     return(
         <div className='modal'>
             <div className='container'>
-                    <h1>CADASTRO DE FORNECEDORES</h1>
+                    <h1>CADASTRO DE FORNECEDORES - {props.acao}</h1>
                 <Tabs className='tabContainer'>
                     <TabList>
                         <Tab>Administrtivos</Tab>

@@ -103,7 +103,7 @@ export default function Grid( {
 
 
             { showModal && 
-                <Fornecedor close={handleClose}  />
+                <Fornecedor acao={'INCLUSÃO'} close={handleClose}  />
             }
 
         </Container>
