@@ -73,6 +73,7 @@ function AuthProvider({ children }){
   async function signOut(event){
     event.preventDefault()
     toast("Até Logo...", {
+      autoClose:1500,
       theme:"colored",
       position:"top-center",
       type:toast.TYPE.SUCCESS

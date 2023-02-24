@@ -53,7 +53,7 @@ const Login = () => {
         }
 
         if(modulo.length===0){
-            toast("Mudulo não escolhido.... Não seguiremos", {
+            toast("Módulo não escolhido.... Não seguiremos", {
                 theme:"colored",
                 position:"top-center",
                 type:toast.TYPE.ERROR
