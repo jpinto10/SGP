@@ -61,7 +61,7 @@ const Login = () => {
         }
 
         if(obra.length===0){
-            toast("Usuário não Digitado.... Não seguiremos", {
+            toast("Obra não selecionada.... Não seguiremos", {
                 theme:"colored",
                 position:"top-center",
                 type:toast.TYPE.ERROR
