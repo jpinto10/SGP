@@ -37,6 +37,7 @@ const Login = () => {
         debugger        
         if(usuario.length===0){
             toast("Usuário não Digitado.... Não seguiremos", {
+                autoClose:3000,
                 theme:"colored",
                 position:"top-center",
                 type:toast.TYPE.ERROR

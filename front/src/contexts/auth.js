@@ -1,6 +1,9 @@
 import { useState, createContext, useEffect } from 'react';
 import conn from '../services/sqlconnection'
 import { toast } from 'react-toastify'
+
+import { Navigate } from 'react-router-dom';
+
 export const AuthContext = createContext({});
 
 const conect = conn()
@@ -67,12 +70,18 @@ function AuthProvider({ children }){
     localStorage.setItem('SistemaUser', JSON.stringify(data));
   }
 
-  async function signOut(){
-    toast.success(`Até Logo..`)
+  async function signOut(event){
+    event.preventDefault()
+    toast("Até Logo...", {
+      theme:"colored",
+      position:"top-center",
+      type:toast.TYPE.SUCCESS
+    })
     localStorage.removeItem('SistemaUser');
     setUser("Visitante");
     setsigned(false);
-    window.location.href = '/'
+    return <Navigate to="/" />
+    // window.location.href = '/'
   }
 
   return(

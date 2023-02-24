@@ -11,8 +11,8 @@ const Topo = () => {
   const { user, signOut, signed } = useContext(AuthContext);
   const isAdm = (user && user.adm)
 
-  const handleLogout = ()=>{
-    signOut()
+  const handleLogout = (event)=>{
+    signOut(event)
   }
 
   return (
