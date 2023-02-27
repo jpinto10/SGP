@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import usuario from '../../assets/usuario.png'
 import './style.css';
 
@@ -9,10 +9,12 @@ import { AuthContext } from '../../contexts/auth';
 const Topo = () => {
 
   const { user, signOut, signed } = useContext(AuthContext);
-  const isAdm = (user && user.adm)
+  const isAdm = (user && user.adm);
+  const navigate = useNavigate();
 
   const handleLogout = (event)=>{
     signOut(event)
+    navigate('/')   
   }
 
   return (

@@ -1,6 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import React from "react";
 import { AuthContext } from "../../contexts/auth";
+import { Redirect } from 'react-router'
 
 import { ToastContainer, toast  } from 'react-toastify';
 
@@ -8,6 +9,8 @@ import Logo from '../../assets/CMS.png';
 import './index.css';
 
 import Principal from "../Principal";
+import { Navigate, useNavigate } from "react-router-dom";
+import Home from '../Principal/index'
 
 const Login = () => {
 
@@ -18,23 +21,25 @@ const Login = () => {
     const [modulo, setModulo] = useState('')
     const [obra, setObra] = useState('')
 
+    const navigate = useNavigate();
+
     //função para pegar a opção de escolha de obra.. no select
     function hendleObra(e){
-        debugger
+        // debugger
         e.preventDefault();
         setObra(e.target.value)
     }
     
     //função para pegar a opção de módulo.. no select
     function hendleModulo(e){
-        debugger
+        // debugger
         e.preventDefault();
         setModulo(e.target.value)
     }
 
     async function handleSubmit(e){
         e.preventDefault();
-        debugger        
+        // debugger        
         if(usuario.length===0){
             toast("Usuário não Digitado.... Não seguiremos", {
                 autoClose:3000,
@@ -69,6 +74,8 @@ const Login = () => {
         }
 
         await signIn(usuario, senha, modulo, obra);
+        navigate('/')   
+        // <Navigate element={<Navigate replace to={<Home/>} />} />
     };
 
     useEffect(()=>{

@@ -2,7 +2,9 @@ import { useState, createContext, useEffect } from 'react';
 import conn from '../services/sqlconnection'
 import { toast } from 'react-toastify'
 
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate} from 'react-router-dom';
+
+import RedirectFeito from '../components/Redirecionamento'
 
 export const AuthContext = createContext({});
 
@@ -16,7 +18,7 @@ function AuthProvider({ children }){
   const [moduloLogado, setModuloLogado] = useState('')
 
   const [urlImagemUser, setUrlImagemUser] = useState('')
-
+  
   useEffect(()=>{
       //verifica se existe o usuário quando entrar na aplicação. Procurando o item = SistemaUser
       const storageUser = localStorage.getItem('SistemaUser');
@@ -58,14 +60,14 @@ function AuthProvider({ children }){
         position:"top-center",
         autoClose: 1000,
         type:toast.TYPE.SUCCESS
-      })  
-      return (<Navigate to='/'/> )
-
+      })
+ 
     } else{   
       toast.error('Dados inválidos, tente novamente por favor');
     }
       setLoading(false);
   }
+
 
   //função criada para setar os dados do usuário na variável SistemaUser
   function storageUser(data){
@@ -83,8 +85,6 @@ function AuthProvider({ children }){
     localStorage.removeItem('SistemaUser');
     setUser("Visitante");
     setsigned(false);
-    return <Navigate to="/" />
-    // window.location.href = '/'
   }
 
   return(

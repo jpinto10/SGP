@@ -13,6 +13,6 @@ export default function RouteWrapper({ component: Componente, isPrivate, ...rest
     }        
   
     return (
-        <Route {...rest} render={props => (<Componente {...props} />)} />
+        <Route {...rest} render={Componente} />
     );
 }
