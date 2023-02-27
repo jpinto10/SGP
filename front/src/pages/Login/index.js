@@ -69,7 +69,6 @@ const Login = () => {
         }
 
         await signIn(usuario, senha, modulo, obra);
-        window.location.href = '/'
     };
 
     useEffect(()=>{

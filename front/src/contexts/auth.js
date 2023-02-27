@@ -56,8 +56,10 @@ function AuthProvider({ children }){
       toast(`Bem vindo.. ${ativo.dadosUser.nome} `, {
         theme:"colored",
         position:"top-center",
-        autoClose: 1000
+        autoClose: 1000,
+        type:toast.TYPE.SUCCESS
       })  
+      return (<Navigate to='/'/> )
 
     } else{   
       toast.error('Dados inválidos, tente novamente por favor');

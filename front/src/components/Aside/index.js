@@ -12,13 +12,14 @@ import { menuMaoDeObra } from './menuMaoDeObra';
 
 
 const Aside = () =>{
-    const { moduloLogado } = useContext(AuthContext);
+    const { moduloLogado, signed } = useContext(AuthContext);
     // debugger
 
     return (
       <>
         <ul className='nav-menu-items' >
-            { moduloLogado === 'menuCadastro' && menuCadastro.map((item, index) => {
+          
+            { signed && moduloLogado === 'menuCadastro' && menuCadastro.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
@@ -29,7 +30,7 @@ const Aside = () =>{
             })}
 
 
-            { moduloLogado === 'menuEstoque' && menuEstoque.map((item, index) => {
+            { signed && moduloLogado === 'menuEstoque' && menuEstoque.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
@@ -39,7 +40,7 @@ const Aside = () =>{
               );
             })}
 
-            { moduloLogado === 'menuFinanceiro' && menuFinanceiro.map((item, index) => {
+            { signed && moduloLogado === 'menuFinanceiro' && menuFinanceiro.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
@@ -50,7 +51,7 @@ const Aside = () =>{
             })}
 
 
-            { moduloLogado === 'menuMaoDeObra' && menuMaoDeObra.map((item, index) => {
+            { signed && moduloLogado === 'menuMaoDeObra' && menuMaoDeObra.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
