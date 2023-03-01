@@ -3,8 +3,6 @@ import { useContext } from 'react';
 import { Routes, Route, Navigate, BrowserRouter} from 'react-router-dom';
 import { AuthContext } from '../contexts/auth';
 
-// import RouteWrapper from './Rotas'
-
 import Signin from '../pages/Login';
 import NotFound from '../pages/NotFound';
 import Home from '../pages/Principal'

@@ -4,8 +4,6 @@ import { toast } from 'react-toastify'
 
 import { Link, Navigate, useNavigate} from 'react-router-dom';
 
-import RedirectFeito from '../components/Redirecionamento'
-
 export const AuthContext = createContext({});
 
 const conect = conn()
