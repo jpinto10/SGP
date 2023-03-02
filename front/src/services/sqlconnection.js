@@ -20,6 +20,30 @@ export default () => {
             return json;
         },
 
+        //-------------------
+        //FORNECEDOR - INICIO
+        //-------------------
+        cadFornecedor: async(cnpj, cpf, descricao, fone,  email,  endereco)=>{
+            let json = await requisicao('post', '/incaltfornecedor', { cnpj, cpf, descricao, fone,  email,  endereco });
+            return json;   
+        },
+        excFornecedor: async(cnpj, cpf)=>{
+            let json = await requisicao('post', '/excfornecedor', { cnpj, cpf });
+            return json;   
+        },
+        pegaCodigoFornecedor: async(cnpj, cpf)=>{
+            let json = await requisicao('post', '/pegacodigofornecedor', { cnpj, cpf });
+            return json;   
+        },
+        pegaTodosFornecedores: async()=>{
+            let json = await requisicao('post', '/fornecedor', {});
+            return json;   
+        },
+        //-------------------
+        //FORNECEDOR - FINAL
+        //-------------------
+       
+
         pegaPeriodos: async(filial, centrocusto) => {
             let json = await requisicao('post', '/periodos', { filial, centrocusto });
             console.log(json)

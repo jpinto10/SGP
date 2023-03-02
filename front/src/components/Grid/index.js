@@ -6,7 +6,7 @@ import { IoMdPulse } from "react-icons/io";
 import { AiFillForward, AiFillBackward } from "react-icons/ai"
 import { TiUserAdd, TiDocumentText, TiTrash, TiEye, TiChevronRight, TiChevronLeft, TiPlus } from "react-icons/ti";
 
-import Fornecedor from "../Modais/Fornecedor";
+import FornecedorModal from "../Modais/Fornecedor";
 
 import Buttao from "../Buttao";
 
@@ -72,20 +72,29 @@ export default function Grid( {
             <table>
                 <thead>
                     {botInclusao && <Buttao corFundo={'#00FF00'} click={inclus}  Children={<TiPlus color='#504040' size={25}/> }  /> }
-                    <tr>
 
-                        {   
-                            cabec.map((cabItem) =>  { 
-                                return(
-                                        <th key={cabItem} colSpan={(cabItem.id === '8')?1:1}  >
-                                        {
-                                            cabItem.value
-                                        }
-                                        </th>
-                                    )})
-                        }
+                    { (adados.length !== 0)  &&
+                   
+                        <tr>
 
-                    </tr>
+                            {   
+                                cabec.map((cabItem) =>  { 
+                                    return(
+                                            <th key={cabItem} colSpan={(cabItem.id === '8')?1:1}  >
+                                            {
+                                                cabItem.value
+                                            }
+                                            </th>
+                                        )})
+                            }
+
+                        </tr>
+                    }
+
+                    { (adados.length === 0)  &&
+                        <h1>Faça inclusão dos DADOS.</h1>
+                    }
+
                 </thead>
                 <tbody>
                     
@@ -96,14 +105,15 @@ export default function Grid( {
                 </tbody>      
             </table>
 
-            <div className="paginacao">
-                {paginacao && <Buttao corFundo={'#d4d4d4'} click={paginacao}  Children={<AiFillBackward color='#161616 ' size={25}/> }  /> }
-                {paginacao && <Buttao corFundo={'#d4d4d4'} click={paginacao}  Children={<AiFillForward  color='#161616 ' size={25}/> }  /> }
-            </div>                     
-
+            { (adados.length >= 3)  &&
+                <div className="paginacao">
+                    {paginacao && <Buttao corFundo={'#d4d4d4'} click={paginacao}  Children={<AiFillBackward color='#161616 ' size={25}/> }  /> }
+                    {paginacao && <Buttao corFundo={'#d4d4d4'} click={paginacao}  Children={<AiFillForward  color='#161616 ' size={25}/> }  /> }
+                </div>                     
+            }
 
             { showModal && 
-                <Fornecedor acao={'INCLUSÃO'} close={handleClose}  />
+                <FornecedorModal acao={'INCLUSÃO'} close={handleClose}  />
             }
 
         </Container>
