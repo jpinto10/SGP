@@ -23,8 +23,8 @@ export default () => {
         //-------------------
         //FORNECEDOR - INICIO
         //-------------------
-        cadFornecedor: async(cnpj, cpf, descricao, fone,  email,  endereco)=>{
-            let json = await requisicao('post', '/incaltfornecedor', { cnpj, cpf, descricao, fone,  email,  endereco });
+        cadFornecedor: async(cnpj, codigo, descricao, contato, email, fone, endereco, formData)=>{
+            let json = await requisicao('post', '/incaltfornecedor', { cnpj, codigo, descricao, contato, email, fone, endereco, formData });
             return json;   
         },
         excFornecedor: async(cnpj, cpf)=>{

@@ -21,12 +21,11 @@ const Row = ({linha, funcao})=>{
             {   
                 keysItens.map( key =>
                     ( (key !== 'btAlt' && key !== 'btExc' && key !== 'btnConsult') ?
-                        <td colSpan={1} key={key}>{linha[key]}</td> : key === 'btAlt' ?
-                        <Buttao click={funcao} corFundo={'#f09809'} Children={<TiDocumentText color='#161616' size={25}/> } /> :
-                        key === 'btExc' ? <Buttao corFundo={'#f00909'} Children={<TiTrash color='#161616' size={25}/> } /> : 
-                        key === 'btnConsult' && <Buttao corFundo={'#0922f0'} Children={<TiEye color='#fff' size={25}/> } /> 
-                    ))
-
+                    <td colSpan={1} key={key}>{linha[key]}</td> : key === 'btAlt' ?
+                    <Buttao click={funcao} corFundo={'#f09809'} Children={<TiDocumentText color='#161616' size={25}/> } /> :
+                    key === 'btExc' ? <Buttao corFundo={'#f00909'} Children={<TiTrash color='#161616' size={25}/> } /> : 
+                    key === 'btnConsult' && <Buttao corFundo={'#0922f0'} Children={<TiEye color='#fff' size={25}/> } /> 
+                ))                    
             }
            
         </tr>
@@ -80,7 +79,9 @@ export default function Grid( {
                             {   
                                 cabec.map((cabItem) =>  { 
                                     return(
-                                            <th key={cabItem} colSpan={(cabItem.id === '8')?1:1}  >
+
+
+                                            <th key={cabItem}  >
                                             {
                                                 cabItem.value
                                             }

@@ -38,13 +38,23 @@
     display: flex;
   }
 
+  .coluna0{
+    width: 60rem;
+    margin-right: 0.78rem;
+  } 
+
   .coluna1{
     width: 11rem;
     margin-right: 0.78rem;
   } 
 
   .coluna2{
-    width: 48rem;
+    width: 18rem;
+    margin-right: 0.78rem;
+  } 
+
+  .coluna3{
+    width: 29rem;
   } 
 
   .botao {

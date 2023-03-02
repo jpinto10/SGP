@@ -3,24 +3,28 @@ import styled from "styled-components";
 export const Container = styled.div`
     color: black ;
     /* display: flex;
-    align-content: stretch; */
-    /* background-color: red ; */
+    align-content: stretch;
+    background-color: red ; */
+    width: 100%;
     
     > table{
-        margin-top: 0.03rem;
+        margin: 0.03rem auto;
         background-color: #f8f8f8 ;
         border:1px solid #ccc;
         border-collapse: collapse ;
         width: 100% ;
-        table-layout: fixed ;
-    }    
+        table-layout: auto ;
+    }  
+    
+    >table td{
+        padding: 0.03rem 1rem  ;
+    }
 
     >table th{
-        padding: .50em  0 .50em 0;
+        padding: .50em  0 .50em 1rem;
         text-align: left ;
         color: red ;
         background-color: #f8f8f8 ;
-
     }
 
     >table tr{

@@ -29,7 +29,7 @@ const SECRET = 'SGPCONSULT';
     //-------------------
     routers.post('/pegacodigofornecedor', async function(req, res) {
         const sql1 = `SELECT MAX(id) as item FROM SGP.dbo.FORNECEDOR `
-        const rows1 = await connDadosadv.dbConect(sql1)
+        const rows1 = await conn.dbConect(sql1)
         const _ID = rows1.recordset[0].item + 1
         
         const segCodigo = '000000'
@@ -62,10 +62,9 @@ const SECRET = 'SGPCONSULT';
     routers.post('/incaltfornecedor', async function(req, res) {
         //MONTAGE DOS DADOS PARA GRAVAÇÃO 
         const _CNPJ = req.body.cnpj
-        const _CPF = req.body.cpf
         
-        const sql0 = `SELECT COUNT(id) as item FROM SGP.dbo.FORNECEDOR WHERE cnpj = '${_CNPJ}' or  cpf = '${_CPF}' `
-        const rows0 = await connDadosadv.dbConect(sql0)
+        const sql0 = `SELECT COUNT(id) as item FROM FORNECEDOR WHERE cnpj = '${_CNPJ}' `
+        const rows0 = await conn.dbConect(sql0)
         const _temFornece = rows0.recordset[0].item
     
         if (_temFornece === 0) {
@@ -74,20 +73,24 @@ const SECRET = 'SGPCONSULT';
             const _FONE             = req.body.fone
             const _EMAIL            = req.body.email
             const _ENDERECO         = req.body.endereco
+            const _CONTATO          = req.body.contato
         
-            const sql1 = `SELECT MAX(id) as item FROM SGP.dbo.FORNECEDOR `
-            const rows1 = await connDadosadv.dbConect(sql1)
+            const sql1 = `SELECT MAX(id) as item FROM FORNECEDOR `
+            const rows1 = await conn.dbConect(sql1)
             const _ID = rows1.recordset[0].item + 1
             
-            const segCodigo = '000000'
-            const _CODIGO = segCodigo.slice(6-length(_ID)) + _ID
+            if(req.body.codigo){
+                _CODIGO = req.body.codigo
+            }else {
+                const segCodigo = '000000'
+                const _CODIGO = segCodigo.slice(6-length(_ID)) + _ID
+            }
 
-            const sql = `INSERT INTO SGP.dbo.FORNECEDOR(ID, CODIGO, CNPJ, CPF, DESCRICAO, FONE, EMAIL, ENDERECO ) VALUES(
-                ${_ID}, ${_CODIGO}, ${_CNPJ}, ${_CPF}, ${_DESCRICAO}, ${_FONE}, ${_EMAIL}, ${_ENDERECO}) `
+            const sql = `INSERT INTO FORNECEDOR(CODIGO, CNPJ, DESCRICAO, FONE, EMAIL, ENDERECO, CONTATO, DELETADO ) VALUES(
+                '${_CODIGO}', '${_CNPJ}', '${_DESCRICAO}', '${_FONE}', '${_EMAIL}', '${_ENDERECO}', '${_CONTATO}', '') `
             const rows = await conn.dbConect(sql)
 
-            if (rows.recordset.length) {
-                let dadosFornecedor = rows.recordset[0]
+            if (rows.rowsAffected.length) {
                 return res.status(200).json({ auth: true  });
             } else {
                 return res.status(200).json({ auth: false });
@@ -98,16 +101,15 @@ const SECRET = 'SGPCONSULT';
             const _EMAIL            = req.body.email
             const _ENDERECO         = req.body.endereco
             
-            const sql = `UPDATE SGP.dbo.FORNECEDOR SET 
+            const sql = `UPDATE FORNECEDOR SET 
                 CNPJ            = ${_CNPJ}, 
-                CPF             = ${_CPF},
+                CPF             = ${_CNPJ},
                 DESCRICAO       = ${_DESCRICAO},
                 FONE            = ${_FONE},
                 EMAIL           = ${_EMAIL},
                 ENDERECO        = ${_ENDERECO} `
             const rows = await conn.dbConect(sql)
-            if (rows.recordset.length) {
-                let dadosFornecedor = rows.recordset[0]
+            if (rows.rowsAffected.length) {
                 return res.status(200).json({ auth: true });
             } else {
                 return res.status(200).json({ auth: false });
@@ -124,7 +126,7 @@ const SECRET = 'SGPCONSULT';
         const _CPF = req.body.cpf
         
         const sql0 = `SELECT COUNT(id) as item FROM SGP.dbo.FORNECEDOR WHERE cnpj = '${_CNPJ}' or  cpf = '${_CPF}' `
-        const rows0 = await connDadosadv.dbConect(sql0)
+        const rows0 = await conn.dbConect(sql0)
         const _temFornece = rows0.recordset[0].item
     
         if (_temFornece === 0) {

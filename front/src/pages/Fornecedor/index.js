@@ -22,24 +22,7 @@ const Fornecedor = () => {
         { id: '8',  value: 'Ação'}
     ])
 
-    const [adados, setAdados] = useState([
-        // {codigo: 'AAAAAA', nome:'edilson', fone: '121212', email:'121212', dtultm: '20/11/75', ultimnf: '00005', total: 'R$ 1000.00',       btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-        // {codigo: 'BBBBBB', nome:'gustavo', fone: '121212', email:'121212', dtultm: '01/01/89', ultimnf: '123587', total: 'R$ 1000.00',      btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-        // {codigo: 'CCCCCC', nome:'leleide', fone: '121212', email:'121212', dtultm: '01/23/58', ultimnf: '85748', total: 'R$ 1000.00',       btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-        // {codigo: 'DDDDDD', nome:'aurora ', fone: '121212', email:'1212121', dtultm: '01/01/01', ultimnf: '00001545', total: 'R$ 1000.00',   btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-        // {codigo: 'EEEEEE', nome:'1111111', fone: '121212', email:'121212', dtultm: '01/01/05', ultimnf: '002113213', total: 'R$ 1000.00',   btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-        // {codigo: 'FFFFFF', nome:'2222222', fone: '121212', email:'1212212', dtultm: '02/05/08', ultimnf: '213897', total: 'R$ 1000.00',     btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-        // {codigo: 'GGGGGG', nome:'3333333', fone: '121212', email:'113313', dtultm: '02/05/2023', ultimnf: '23134589', total: 'R$ 0.00',     btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-        // {codigo: 'EEEEEE', nome:'1111111', fone: '121212', email:'121212', dtultm: '01/01/05', ultimnf: '002113213', total: 'R$ 1000.00',   btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-        // {codigo: 'FFFFFF', nome:'2222222', fone: '121212', email:'1212212', dtultm: '02/05/08', ultimnf: '213897', total: 'R$ 1000.00',     btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-        // {codigo: 'GGGGGG', nome:'3333333', fone: '121212', email:'113313', dtultm: '05/02/2025', ultimnf: '23134589', total: 'R$ 0.00',     btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-        // {codigo: 'AAAAAA', nome:'edilson', fone: '121212', email:'121212', dtultm: '20/11/75', ultimnf: '00005', total: 'R$ 1000.00',       btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-        // {codigo: 'BBBBBB', nome:'gustavo', fone: '121212', email:'121212', dtultm: '01/01/89', ultimnf: '123587', total: 'R$ 1000.00',      btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-        // {codigo: 'CCCCCC', nome:'leleide', fone: '121212', email:'121212', dtultm: '01/23/58', ultimnf: '85748', total: 'R$ 1000.00',       btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-        // {codigo: 'DDDDDD', nome:'aurora ', fone: '121212', email:'1212121', dtultm: '01/01/01', ultimnf: '00001545', total: 'R$ 1000.00',   btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-        // {codigo: 'EEEEEE', nome:'1111111', fone: '121212', email:'121212', dtultm: '01/01/05', ultimnf: '002113213', total: 'R$ 1000.00',   btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-        // {codigo: 'FFFFFF', nome:'2222222', fone: '121212', email:'1212212', dtultm: '02/05/08', ultimnf: '213897', total: 'R$ 1000.00',     btAlt:'ALT', btExc:'EXC', btnConsult:'CSL'},
-    ])
+    const [adados, setAdados] = useState([])
   
     const [modulo, setModulo] = useState('')
     const [obra, setObra] = useState('')
@@ -75,7 +58,7 @@ const Fornecedor = () => {
                     total:      'R$' + element.totalComprado,       
                     btAlt:      'ALT', 
                     btExc:      'EXC', 
-                    btnConsult: 'CSL'
+                    // btnConsult: 'CSL'
                 })
             });
             setAdados(itens);
