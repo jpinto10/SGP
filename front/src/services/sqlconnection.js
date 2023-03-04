@@ -28,11 +28,11 @@ export default () => {
             return json;   
         },
         excFornecedor: async(cnpj, cpf)=>{
-            let json = await requisicao('post', '/excfornecedor', { cnpj, cpf });
+            let json = await requisicao('post', '/excfornecedor', { cnpj });
             return json;   
         },
         pegaCodigoFornecedor: async(cnpj, cpf)=>{
-            let json = await requisicao('post', '/pegacodigofornecedor', { cnpj, cpf });
+            let json = await requisicao('post', '/pegacodigofornecedor', { cnpj });
             return json;   
         },
         pegaTodosFornecedores: async()=>{

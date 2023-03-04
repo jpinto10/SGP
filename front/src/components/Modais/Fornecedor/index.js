@@ -33,9 +33,6 @@ export default function Fornecedor(props){
             setFone(props.dadosEditaveis.fone)
             setEndereco(props.dadosEditaveis.endereco)
         }
-
-
-
     }
 
     const handleCodigo = (e)=>{
@@ -63,9 +60,17 @@ export default function Fornecedor(props){
 
     async function hendleSavarFornecedor(){
         const formData = new FormData();
-        let gravaUsuario = await conect.cadFornecedor(cnpj, codigo, descricao, contato, email, fone, endereco, formData)
-        if (!gravaUsuario.auth){
-            console.log('deucerto')
+        if(props.acao === 'EXCLUSÃO'){
+            let exclueFornecedor = await conect.excFornecedor(cnpj)
+            if (!exclueFornecedor.auth){
+                console.log('deucerto')
+            }
+
+        }else{
+            let gravaFornecedor = await conect.cadFornecedor(cnpj, codigo, descricao, contato, email, fone, endereco, formData)
+            if (!gravaFornecedor.auth){
+                console.log('deucerto')
+            }
         }
     }
 

@@ -102,12 +102,13 @@ const SECRET = 'SGPCONSULT';
             const _ENDERECO         = req.body.endereco
             
             const sql = `UPDATE FORNECEDOR SET 
-                CNPJ            = ${_CNPJ}, 
-                CPF             = ${_CNPJ},
-                DESCRICAO       = ${_DESCRICAO},
-                FONE            = ${_FONE},
-                EMAIL           = ${_EMAIL},
-                ENDERECO        = ${_ENDERECO} `
+                CNPJ            = '${_CNPJ}', 
+                CPF             = '${_CNPJ}',
+                DESCRICAO       = '${_DESCRICAO}',
+                FONE            = '${_FONE}',
+                EMAIL           = '${_EMAIL}',
+                ENDERECO        = '${_ENDERECO}'
+                WHERE cnpj = '${_CNPJ}' `
             const rows = await conn.dbConect(sql)
             if (rows.rowsAffected.length) {
                 return res.status(200).json({ auth: true });
@@ -125,18 +126,18 @@ const SECRET = 'SGPCONSULT';
         const _CNPJ = req.body.cnpj
         const _CPF = req.body.cpf
         
-        const sql0 = `SELECT COUNT(id) as item FROM SGP.dbo.FORNECEDOR WHERE cnpj = '${_CNPJ}' or  cpf = '${_CPF}' `
+        const sql0 = `SELECT COUNT(id) as item FROM FORNECEDOR WHERE cnpj = '${_CNPJ}' `
         const rows0 = await conn.dbConect(sql0)
         const _temFornece = rows0.recordset[0].item
     
         if (_temFornece === 0) {
             return res.status(200).json({ auth: false });
         } else {
-            const sql = `UPDATE SGP.dbo.FORNECEDOR SET 
-                DELETADO        = '*' `
+            const sql = `UPDATE FORNECEDOR SET 
+                DELETADO        = '*' 
+                WHERE cnpj = '${_CNPJ}' `
             const rows = await conn.dbConect(sql)
-            if (rows.recordset.length) {
-                let dadosFornecedor = rows.recordset[0]
+            if (rows.rowsAffected.length) {
                 return res.status(200).json({ auth: true });
             } else {
                 return res.status(200).json({ auth: false });

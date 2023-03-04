@@ -23,8 +23,8 @@ const Row = ({linha, funcaoIncluir, funcaoEditar, funcaoExcluir, funcaoCosultar}
                     ( (key !== 'btAlt' && key !== 'btExc' && key !== 'btnConsult') ?
                     <td colSpan={1} key={key}>{linha[key]}</td> : key === 'btAlt' ?
                     <Buttao click={()=>funcaoEditar(linha)} corFundo={'#f09809'} Children={<TiDocumentText color='#161616' size={25}/> } /> :
-                    key === 'btExc' ? <Buttao click={funcaoExcluir} corFundo={'#f00909'} Children={<TiTrash color='#161616' size={25}/> } /> : 
-                    key === 'btnConsult' && <Buttao click={funcaoCosultar} corFundo={'#0922f0'} Children={<TiEye color='#fff' size={25}/> } /> 
+                    key === 'btExc' ? <Buttao click={()=>funcaoExcluir(linha)} corFundo={'#f00909'} Children={<TiTrash color='#161616' size={25}/> } /> : 
+                    key === 'btnConsult' && <Buttao click={()=>funcaoCosultar(linha)} corFundo={'#0922f0'} Children={<TiEye color='#fff' size={25}/> } /> 
                 ))                    
             }
            
@@ -72,13 +72,15 @@ export default function Grid( {
     } 
 
 
-    const consultar = ()=> {
+    const consultar = (linha)=> {
         setAcaoModal('CONSULTA')
+        setDados(linha)
         setShowModal(!showModal)
     } 
     
-    const exclusao = ()=> {
+    const exclusao = (linha)=> {
         setAcaoModal('EXCLUSÃO')
+        setDados(linha)
         setShowModal(!showModal)
     } 
 
