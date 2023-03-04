@@ -45,7 +45,7 @@ const SECRET = 'SGPCONSULT';
     });
 
     routers.post('/fornecedor', async function(req, res) {
-        const sql = `SELECT * FROM FORNECEDOR WHERE DELETADO = '' `
+        const sql = `SELECT * FROM FORNECEDOR WHERE DELETADO = '' ORDER BY CODIGO, DESCRICAO `
         const rows = await conn.dbConect(sql)
 
         if (rows.recordset.length) {

@@ -40,12 +40,12 @@ const Fornecedor = () => {
 
     useEffect(()=>{
         loadingFornecedor()
-        return ()=>{}
-    }, [])
+    }, [adados])
 
     async function loadingFornecedor(){
         let todosFornecedores = await conect.pegaTodosFornecedores()
         if(todosFornecedores.auth){
+            setItens([])
             todosFornecedores.dadosFornecedor.forEach(element => {
                 itens.push(
                 {
