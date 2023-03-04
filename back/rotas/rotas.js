@@ -100,6 +100,7 @@ const SECRET = 'SGPCONSULT';
             const _FONE             = req.body.fone
             const _EMAIL            = req.body.email
             const _ENDERECO         = req.body.endereco
+            const _CONTATO          = req.body.contato
             
             const sql = `UPDATE FORNECEDOR SET 
                 CNPJ            = '${_CNPJ}', 
@@ -107,7 +108,8 @@ const SECRET = 'SGPCONSULT';
                 DESCRICAO       = '${_DESCRICAO}',
                 FONE            = '${_FONE}',
                 EMAIL           = '${_EMAIL}',
-                ENDERECO        = '${_ENDERECO}'
+                ENDERECO        = '${_ENDERECO}',
+                CONTATO         = '${_CONTATO}'
                 WHERE cnpj = '${_CNPJ}' `
             const rows = await conn.dbConect(sql)
             if (rows.rowsAffected.length) {

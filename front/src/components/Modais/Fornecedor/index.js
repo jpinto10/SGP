@@ -8,6 +8,8 @@ import './style.css'
 import conn from '../../../services/sqlconnection'
 import { useEffect, useState } from 'react';
 
+import { toast  } from 'react-toastify';
+
 export default function Fornecedor(props){
     const conect = conn()
 
@@ -63,13 +65,22 @@ export default function Fornecedor(props){
         if(props.acao === 'EXCLUSÃO'){
             let exclueFornecedor = await conect.excFornecedor(cnpj)
             if (!exclueFornecedor.auth){
-                console.log('deucerto')
-            }
+                toast("Exclusão Realizada com Sucesso", {
+                    autoClose:3000,
+                    theme:"colored",
+                    position:"top-center",
+                    type:toast.TYPE.SUCCESS
+                })            }
 
         }else{
             let gravaFornecedor = await conect.cadFornecedor(cnpj, codigo, descricao, contato, email, fone, endereco, formData)
             if (!gravaFornecedor.auth){
-                console.log('deucerto')
+                toast("ALTERAÇÃO REALIZADA", {
+                    autoClose:3000,
+                    theme:"colored",
+                    position:"top-center",
+                    type:toast.TYPE.SUCCESS
+                })            
             }
         }
     }
