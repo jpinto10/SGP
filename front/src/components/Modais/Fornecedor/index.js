@@ -6,7 +6,7 @@ import Input from '../../Input';
 import './style.css'
 
 import conn from '../../../services/sqlconnection'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Fornecedor(props){
     const conect = conn()
@@ -19,6 +19,24 @@ export default function Fornecedor(props){
     const [fone, setFone]           = useState('')
     const [endereco, setEndereco]   = useState('')
 
+    useEffect(()=>{
+        loadDadosEditaveis()
+    },[])
+
+    function loadDadosEditaveis(){
+        if(props.dadosEditaveis.codigo){
+            setCodigo(props.dadosEditaveis.codigo)
+            setCnpj(props.dadosEditaveis.cnpj)
+            setDescricao(props.dadosEditaveis.nome)
+            setContato(props.dadosEditaveis.contato)
+            setEmail(props.dadosEditaveis.email)
+            setFone(props.dadosEditaveis.fone)
+            setEndereco(props.dadosEditaveis.endereco)
+        }
+
+
+
+    }
 
     const handleCodigo = (e)=>{
         setCodigo(e.target.value)

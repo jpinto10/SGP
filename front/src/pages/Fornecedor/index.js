@@ -13,13 +13,16 @@ const Fornecedor = () => {
 
     const [cabec, setCabec] = useState([
         { id: '1',  value: 'Código'},
-        { id: '2',  value: 'Nome Fornecedor '},
-        { id: '3',  value: 'Fone ' },
-        { id: '4',  value: 'E-mail' },
-        { id: '5',  value: 'Dt. Ult. Compra '},
-        { id: '6',  value: 'Ultima Nota '},
-        { id: '7',  value: 'Total Comprado '},
-        { id: '8',  value: 'Ação'}
+        { id: '2',  value: 'Endereço'},
+        { id: '3',  value: 'Contato '},
+        { id: '4',  value: 'C.N.P.J. ' },
+        { id: '5',  value: 'Nome Fornecedor '},
+        { id: '6',  value: 'Fone ' },
+        { id: '7',  value: 'E-mail' },
+        // { id: '8',  value: 'Dt. Ult. Compra '},
+        // { id: '9',  value: 'Ultima Nota '},
+        // { id: '10',  value: 'Total Comprado '},
+        { id: '11',  value: 'Ação'}
     ])
 
     const [adados, setAdados] = useState([])
@@ -39,28 +42,52 @@ const Fornecedor = () => {
     const [btnConsult, setConsult]  = useState('CSL')
 
     useEffect(()=>{
+        setItens([])
+    }, [])
+
+
+    useEffect(()=>{
         loadingFornecedor()
-    }, [adados])
+    }, [itens])
 
     async function loadingFornecedor(){
         let todosFornecedores = await conect.pegaTodosFornecedores()
         if(todosFornecedores.auth){
-            setItens([])
-            todosFornecedores.dadosFornecedor.forEach(element => {
+            for (let index = 0; index < todosFornecedores.dadosFornecedor.length; index++) {
                 itens.push(
-                {
-                    codigo:     element.codigo,  
-                    nome:       element.descricao, 
-                    fone:       element.fone, 
-                    email:      element.email, 
-                    dtultm:     element.dtUltimaCompra, 
-                    ultimnf:    element.ultimaNota, 
-                    total:      'R$' + element.totalComprado,       
-                    btAlt:      'ALT', 
-                    btExc:      'EXC', 
-                    // btnConsult: 'CSL'
-                })
-            });
+                    {
+                        codigo:     todosFornecedores.dadosFornecedor[index].codigo,  
+                        endereco:   todosFornecedores.dadosFornecedor[index].endereco, 
+                        contato:    todosFornecedores.dadosFornecedor[index].contato, 
+                        cnpj:       todosFornecedores.dadosFornecedor[index].cnpj, 
+                        nome:       todosFornecedores.dadosFornecedor[index].descricao, 
+                        fone:       todosFornecedores.dadosFornecedor[index].fone, 
+                        email:      todosFornecedores.dadosFornecedor[index].email, 
+                        // dtultm:     todosFornecedores.dadosFornecedor[index].dtUltimaCompra, 
+                        // ultimnf:    todosFornecedores.dadosFornecedor[index].ultimaNota, 
+                        // total:      'R$' + todosFornecedores.dadosFornecedor[index].totalComprado,       
+                        btAlt:      'ALT', 
+                        btExc:      'EXC', 
+                        // btnConsult: 'CSL'
+                    })
+                    
+            }
+
+            // todosFornecedores.dadosFornecedor.forEach(element => {
+            //     itens.push(
+            //     {
+            //         codigo:     element.codigo,  
+            //         nome:       element.descricao, 
+            //         fone:       element.fone, 
+            //         email:      element.email, 
+            //         dtultm:     element.dtUltimaCompra, 
+            //         ultimnf:    element.ultimaNota, 
+            //         total:      'R$' + element.totalComprado,       
+            //         btAlt:      'ALT', 
+            //         btExc:      'EXC', 
+            //         // btnConsult: 'CSL'
+            //     })
+            // });
             setAdados(itens);
         }
     }

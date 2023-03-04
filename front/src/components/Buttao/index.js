@@ -8,7 +8,7 @@ export default function Buttao ({
 }){
 
     return(
-        <button style={{backgroundColor: corFundo }} onClick={click}   >
+        <button style={{backgroundColor: corFundo }} onClick={(click)}   >
             {Children}
         </button>    
     )

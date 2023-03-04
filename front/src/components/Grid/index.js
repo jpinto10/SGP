@@ -14,7 +14,7 @@ import Buttao from "../Buttao";
 
 
 //componente de impressão das informações - relacionado com o componente de tabela
-const Row = ({linha, funcao})=>{
+const Row = ({linha, funcaoIncluir, funcaoEditar, funcaoExcluir, funcaoCosultar})=>{
     const keysItens = Object.keys(linha)
     return(
         <tr key={linha.codigo}>
@@ -22,9 +22,9 @@ const Row = ({linha, funcao})=>{
                 keysItens.map( key =>
                     ( (key !== 'btAlt' && key !== 'btExc' && key !== 'btnConsult') ?
                     <td colSpan={1} key={key}>{linha[key]}</td> : key === 'btAlt' ?
-                    <Buttao click={funcao} corFundo={'#f09809'} Children={<TiDocumentText color='#161616' size={25}/> } /> :
-                    key === 'btExc' ? <Buttao corFundo={'#f00909'} Children={<TiTrash color='#161616' size={25}/> } /> : 
-                    key === 'btnConsult' && <Buttao corFundo={'#0922f0'} Children={<TiEye color='#fff' size={25}/> } /> 
+                    <Buttao click={()=>funcaoEditar(linha)} corFundo={'#f09809'} Children={<TiDocumentText color='#161616' size={25}/> } /> :
+                    key === 'btExc' ? <Buttao click={funcaoExcluir} corFundo={'#f00909'} Children={<TiTrash color='#161616' size={25}/> } /> : 
+                    key === 'btnConsult' && <Buttao click={funcaoCosultar} corFundo={'#0922f0'} Children={<TiEye color='#fff' size={25}/> } /> 
                 ))                    
             }
            
@@ -47,6 +47,8 @@ export default function Grid( {
     const [botConsulta, setBotConsulta] = useState(false);
     const [validaLinha, setValidaLinha] = useState(true);
     const [modo, setModo] = useState('');
+
+    const [acaoModal, setAcaoModal] = useState('')
     
     const [showModal, setShowModal] = useState(false);
 
@@ -59,8 +61,27 @@ export default function Grid( {
     }
 
     const inclus = ()=> {
+        setAcaoModal('INCLUSÃO')
         setShowModal(!showModal)
-    }    
+    } 
+    
+    const edicao = (linha)=> {
+        setAcaoModal('ALTERAÇÃO')
+        setDados(linha)
+        setShowModal(!showModal)
+    } 
+
+
+    const consultar = ()=> {
+        setAcaoModal('CONSULTA')
+        setShowModal(!showModal)
+    } 
+    
+    const exclusao = ()=> {
+        setAcaoModal('EXCLUSÃO')
+        setShowModal(!showModal)
+    } 
+
 
     const paginacao = ()=> {
         // setShowModal(!showModal)
@@ -77,11 +98,11 @@ export default function Grid( {
                         <tr>
 
                             {   
-                                cabec.map((cabItem) =>  { 
+                                cabec.map((cabItem, index) =>  { 
                                     return(
 
 
-                                            <th key={cabItem}  >
+                                            <th key={index}  >
                                             {
                                                 cabItem.value
                                             }
@@ -97,13 +118,26 @@ export default function Grid( {
                     }
 
                 </thead>
-                <tbody>
+
+                { 
+                        adados.map((linha, index) => { 
+                            return( <tbody key={index}>
+                                <Row funcaoIncluir={inclus} funcaoEditar={edicao} funcaoExcluir={exclusao} funcaoCosultar={consultar} linha={linha} />  
+                            </tbody>
+                            )  
+                        })
+                }
+
+
+                {/* <tbody>
                     
                     { 
                         adados.map(linha => { return( <Row funcao={inclus} linha={linha} />  )  })
                     }
 
-                </tbody>      
+                </tbody>       */}
+
+
             </table>
 
             { (adados.length >= 3)  &&
@@ -114,7 +148,7 @@ export default function Grid( {
             }
 
             { showModal && 
-                <FornecedorModal acao={'INCLUSÃO'} close={handleClose}  />
+                <FornecedorModal acao={acaoModal} close={handleClose} dadosEditaveis={dados}  />
             }
 
         </Container>
