@@ -24,7 +24,7 @@ export default function Fornecedor(props){
     },[])
 
     function loadDadosEditaveis(){
-        if(props.dadosEditaveis.codigo){
+        if(props.dadosEditaveis.codigo && props.acao !== 'INCLUSÃO'){
             setCodigo(props.dadosEditaveis.codigo)
             setCnpj(props.dadosEditaveis.cnpj)
             setDescricao(props.dadosEditaveis.nome)
