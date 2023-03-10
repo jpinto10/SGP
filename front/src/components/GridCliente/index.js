@@ -1,19 +1,13 @@
 import React, {useEffect, useState} from "react";
-
 import { Container } from './styles';
-import { FiEdit2, FiEye } from 'react-icons/fi'
-import { IoMdPulse } from "react-icons/io";
 import { AiFillForward, AiFillBackward } from "react-icons/ai"
-import { TiUserAdd, TiDocumentText, TiTrash, TiEye, TiChevronRight, TiChevronLeft, TiPlus } from "react-icons/ti";
+import { TiDocumentText, TiTrash, TiEye, TiPlus } from "react-icons/ti";
 
-import FornecedorModal from "../Modais/Fornecedor";
+import ClienteModal from "../Modais/Cliente";
 
 import Buttao from "../Buttao";
 
 import conn from '../../services/sqlconnection'
-
-// import './style.css';
-
 
 //componente de impressão das informações - relacionado com o componente de tabela
 const Row = ({linha, funcaoIncluir, funcaoEditar, funcaoExcluir, funcaoCosultar})=>{
@@ -35,7 +29,7 @@ const Row = ({linha, funcaoIncluir, funcaoEditar, funcaoExcluir, funcaoCosultar}
 }
 
 
-export default function Grid( {
+export default function GridCliente( {
     //Parâmetros
     btInc, 
     ...rest
@@ -46,7 +40,7 @@ export default function Grid( {
         { id: '2',  value: 'Endereço'},
         { id: '3',  value: 'Contato '},
         { id: '4',  value: 'C.N.P.J. ' },
-        { id: '5',  value: 'Nome Fornecedor '},
+        { id: '5',  value: 'Nome Cliente '},
         { id: '6',  value: 'Fone ' },
         { id: '7',  value: 'E-mail' },
         { id: '11',  value: 'Ação'}
@@ -71,22 +65,22 @@ export default function Grid( {
 
     useEffect(()=>{
         setItensGrid([])
-        loadingFornecedor()
+        loadingCliente()
     }, [adados])
 
-    async function loadingFornecedor(){
-        let todosFornecedores = await conect.pegaTodosFornecedores()
-        if(todosFornecedores.auth){
-            for (let index = 0; index < todosFornecedores.dadosFornecedor.length; index++) {
+    async function loadingCliente(){
+        let todosClientes = await conect.pegaTodosClientes()
+        if(todosClientes.auth){
+            for (let index = 0; index < todosClientes.dadosCliente.length; index++) {
                 itensGrid.push(
                     {
-                        codigo:     todosFornecedores.dadosFornecedor[index].codigo,  
-                        endereco:   todosFornecedores.dadosFornecedor[index].endereco, 
-                        contato:    todosFornecedores.dadosFornecedor[index].contato, 
-                        cnpj:       todosFornecedores.dadosFornecedor[index].cnpj, 
-                        nome:       todosFornecedores.dadosFornecedor[index].descricao, 
-                        fone:       todosFornecedores.dadosFornecedor[index].fone, 
-                        email:      todosFornecedores.dadosFornecedor[index].email, 
+                        codigo:     todosClientes.dadosCliente[index].codigo,  
+                        endereco:   todosClientes.dadosCliente[index].endereco, 
+                        contato:    todosClientes.dadosCliente[index].contato, 
+                        cnpj:       todosClientes.dadosCliente[index].cnpj, 
+                        nome:       todosClientes.dadosCliente[index].descricao, 
+                        fone:       todosClientes.dadosCliente[index].fone, 
+                        email:      todosClientes.dadosCliente[index].email, 
                         btAlt:      'ALT', 
                         btExc:      'EXC', 
                         // btnConsult: 'CSL'
@@ -115,8 +109,6 @@ export default function Grid( {
         setAcaoModal('ALTERAÇÃO')
         setDados(linha)
         setShowModal(!showModal)
-        // atualiza()
-
     } 
 
 
@@ -198,7 +190,7 @@ export default function Grid( {
             }
 
             { showModal && 
-                <FornecedorModal acao={acaoModal} close={handleClose} dadosEditaveis={dados}  />
+                <ClienteModal acao={acaoModal} close={handleClose} dadosEditaveis={dados}  />
             }
 
         </Container>

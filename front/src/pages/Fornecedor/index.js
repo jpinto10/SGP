@@ -1,13 +1,13 @@
 import React from "react";
 
 import PrincipalGrig from "../PrincipalGrid";
-import Grid from "../../components/Grid";
+import GridGridFornecedor from "../../components/GridFornecedor";
 
 const Fornecedor = () => {
  
     return (
         <PrincipalGrig grid={true} >
-            <Grid />
+            <GridGridFornecedor />
         </PrincipalGrig>
       );
 }
