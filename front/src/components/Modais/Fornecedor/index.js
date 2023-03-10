@@ -22,6 +22,7 @@ export default function Fornecedor(props){
     const [endereco, setEndereco]   = useState('')
 
     useEffect(()=>{
+        debugger
         loadDadosEditaveis()
     },[])
 
@@ -60,21 +61,23 @@ export default function Fornecedor(props){
         setEndereco(e.target.value)        
     }
 
-    async function hendleSavarFornecedor(){
+    async function hendleSavarFornecedor(e){
+        e.preventDefault();
         const formData = new FormData();
         if(props.acao === 'EXCLUSÃO'){
             let exclueFornecedor = await conect.excFornecedor(cnpj)
-            if (!exclueFornecedor.auth){
+            if (exclueFornecedor.auth){
                 toast("Exclusão Realizada com Sucesso", {
                     autoClose:3000,
                     theme:"colored",
                     position:"top-center",
                     type:toast.TYPE.SUCCESS
-                })            }
+                })            
+            }
 
         }else{
             let gravaFornecedor = await conect.cadFornecedor(cnpj, codigo, descricao, contato, email, fone, endereco, formData)
-            if (!gravaFornecedor.auth){
+            if (gravaFornecedor.auth){
                 toast("ALTERAÇÃO REALIZADA", {
                     autoClose:3000,
                     theme:"colored",
@@ -83,6 +86,7 @@ export default function Fornecedor(props){
                 })            
             }
         }
+        props.close()
     }
 
     return(

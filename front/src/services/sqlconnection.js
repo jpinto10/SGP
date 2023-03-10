@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 /* eslint-disable default-case */
-const baseUrl = "http://localhost:3060/api" //-produção
+const baseUrl = "http://192.168.100.71:3060/api" //-produção
 
 export default () => {
 

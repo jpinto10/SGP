@@ -15,12 +15,16 @@ function AuthProvider({ children }){
   const [tituloBotao, setTituloBotao] = useState('Login')
   const [moduloLogado, setModuloLogado] = useState('')
 
+  const [atualiza, setAtualiza] = useState(false)
+
   const [urlImagemUser, setUrlImagemUser] = useState('')
   
   useEffect(()=>{
       //verifica se existe o usuário quando entrar na aplicação. Procurando o item = SistemaUser
+
       const storageUser = localStorage.getItem('SistemaUser');
-      // debugger
+      setAtualiza(!atualiza)
+
       if(storageUser){
         setTituloBotao('Home')
         setUser(JSON.parse(storageUser));
@@ -95,12 +99,14 @@ function AuthProvider({ children }){
         tituloBotao, 
         urlImagemUser,
         moduloLogado,
+        atualiza,
 
         //funções
         signIn,
         signOut,
         setUser,
         setsigned, 
+        setAtualiza,
       }}
     >
       {children}

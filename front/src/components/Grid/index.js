@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import { Container } from './styles';
 import { FiEdit2, FiEye } from 'react-icons/fi'
@@ -9,6 +9,8 @@ import { TiUserAdd, TiDocumentText, TiTrash, TiEye, TiChevronRight, TiChevronLef
 import FornecedorModal from "../Modais/Fornecedor";
 
 import Buttao from "../Buttao";
+
+import conn from '../../services/sqlconnection'
 
 // import './style.css';
 
@@ -35,13 +37,25 @@ const Row = ({linha, funcaoIncluir, funcaoEditar, funcaoExcluir, funcaoCosultar}
 
 export default function Grid( {
     //Parâmetros
-    cabec, 
-    adados, 
     btInc, 
     ...rest
     }){
+
+    const [cabec, setCabec] = useState([
+        { id: '1',  value: 'Código'},
+        { id: '2',  value: 'Endereço'},
+        { id: '3',  value: 'Contato '},
+        { id: '4',  value: 'C.N.P.J. ' },
+        { id: '5',  value: 'Nome Fornecedor '},
+        { id: '6',  value: 'Fone ' },
+        { id: '7',  value: 'E-mail' },
+        { id: '11',  value: 'Ação'}
+    ])
+
+    const [adados, setAdados] = useState([]);
     const [dados, setDados] = useState([]);
-    const [botInclusao, setBotInclusao] = useState(btInc);
+
+    const [botInclusao, setBotInclusao] = useState(true);
     const [botAlteracao, setBotAlteracao] = useState(true);
     const [botExclusao, setBotExclusao] = useState(true);
     const [botConsulta, setBotConsulta] = useState(false);
@@ -51,6 +65,38 @@ export default function Grid( {
     const [acaoModal, setAcaoModal] = useState('')
     
     const [showModal, setShowModal] = useState(false);
+
+    const [itensGrid, setItensGrid] = useState([])
+    const conect = conn()
+
+    useEffect(()=>{
+        setItensGrid([])
+        loadingFornecedor()
+    }, [adados])
+
+    async function loadingFornecedor(){
+        let todosFornecedores = await conect.pegaTodosFornecedores()
+        if(todosFornecedores.auth){
+            for (let index = 0; index < todosFornecedores.dadosFornecedor.length; index++) {
+                itensGrid.push(
+                    {
+                        codigo:     todosFornecedores.dadosFornecedor[index].codigo,  
+                        endereco:   todosFornecedores.dadosFornecedor[index].endereco, 
+                        contato:    todosFornecedores.dadosFornecedor[index].contato, 
+                        cnpj:       todosFornecedores.dadosFornecedor[index].cnpj, 
+                        nome:       todosFornecedores.dadosFornecedor[index].descricao, 
+                        fone:       todosFornecedores.dadosFornecedor[index].fone, 
+                        email:      todosFornecedores.dadosFornecedor[index].email, 
+                        btAlt:      'ALT', 
+                        btExc:      'EXC', 
+                        // btnConsult: 'CSL'
+                    })
+                    
+            }
+            setAdados(itensGrid);
+        }
+    }
+    
 
     const handleClose = ()=>{
         setShowModal(!showModal)
@@ -69,13 +115,15 @@ export default function Grid( {
         setAcaoModal('ALTERAÇÃO')
         setDados(linha)
         setShowModal(!showModal)
+        // atualiza()
+
     } 
 
 
     const consultar = (linha)=> {
         setAcaoModal('CONSULTA')
         setDados(linha)
-        setShowModal(!showModal)
+        setShowModal(!showModal)       
     } 
     
     const exclusao = (linha)=> {
