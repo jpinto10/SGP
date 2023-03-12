@@ -1,0 +1,93 @@
+.modal{
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    bottom:0;
+    right: 0;
+    left: 0;
+    background: rgba(0,0,0, 0.6);
+    z-index: 99;
+  }
+  
+  .modal .container{
+    position: fixed;
+    max-width: 1000px;
+    top: 10%;
+    left:0;
+    right: 0;
+    margin: 0 auto;
+    padding: 4em 2rem;
+    background-color: var(--cinza-400);
+    box-shadow: 0 0 20px rgba(0,0,0, 0.8);
+    border-radius: 20px;
+  }
+
+  .container h1{
+    display: flex;
+    margin-top: -2rem;
+    font-size: 1.5rem;
+    justify-content: center;
+    padding: 0.37rem;
+  }
+
+  .tabContainer {
+    margin-top: 0.56rem;
+  }
+
+  .campos{
+    display: flex;
+  }
+
+  .coluna0{
+    width: 60rem;
+    margin-right: 0.78rem;
+  } 
+
+  .coluna1{
+    width: 11rem;
+    margin-right: 0.78rem;
+  } 
+
+  .coluna2{
+    width: 18rem;
+    margin-right: 0.78rem;
+  } 
+
+  .coluna3{
+    width: 29rem;
+  } 
+
+  .botao {
+    margin-top: 0.56rem;
+    display: flex;
+    justify-content: flex-end;
+
+  }
+
+  .gravar{
+    padding: 0.46rem;
+    font-size: 0.87rem;
+    border-radius: 8px;
+    margin-right: 0.52rem;
+    transition: 0.5s;
+  }
+
+  .fechar{
+    padding: 0.46rem;
+    font-size: 0.87rem;
+    border-radius: 8px;
+    margin-right: 0.52rem;
+    transition: 0.5s;
+  }
+
+  .gravar:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: aqua;
+  }
+
+  .fechar:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: red;
+  }

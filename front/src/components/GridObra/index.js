@@ -3,7 +3,7 @@ import { Container } from './styles';
 import { AiFillForward, AiFillBackward } from "react-icons/ai"
 import { TiDocumentText, TiTrash, TiEye, TiPlus } from "react-icons/ti";
 
-import ObraModal from "../Modais/Obra";
+import ObraModal from "../Modais/Empreendimento";
 
 import Buttao from "../Buttao";
 

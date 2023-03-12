@@ -6,25 +6,25 @@ import * as IoIcons from 'react-icons/io';
 export const menuCadastro = [
     {
         title:'Fornecedor',
-        path:"/Fornecedor",
+        path:"/fornecedor",
         icon:<AiIcons.AiFillHome/>,
         cName: 'nav-text'
     },
     {
         title:'Clientes',
-        path:"/Clientes",
+        path:"/clientes",
         icon:<IoIcons.IoIosPaper />,
         cName: 'nav-text'
     },
     {
         title:'Produtos',
-        path:"/Produtos",
+        path:"/produto",
         icon:<FaIcons.FaCartPlus />,
         cName:'nav-text'
     },
     {
         title:'Obras',
-        path:"/Obras",
+        path:"/empreendimento",
         icon:<FaIcons.FaCartPlus />,
         cName:'nav-text'
     }

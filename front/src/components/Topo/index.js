@@ -31,7 +31,7 @@ const Topo = () => {
           <Link className="topo-link" to="/">Home</Link>
           {signed && 
             <>
-              <Link className="topo-link" to="/">Trocar Módulo/Obra</Link>
+              {/* <Link className="topo-link" to="/">Trocar Módulo/Obra</Link> DEVE SER MONTADO */}
             </>
           }
 

@@ -44,6 +44,77 @@ export default () => {
         //-------------------
        
 
+
+        //-------------------
+        //CLIENTE - INICIO
+        //-------------------
+        cadCliente: async(cnpj, codigo, descricao, contato, email, fone, endereco, formData)=>{
+            let json = await requisicao('post', '/incaltcliente', { cnpj, codigo, descricao, contato, email, fone, endereco, formData });
+            return json;   
+        },
+        excCliente: async(cnpj, cpf)=>{
+            let json = await requisicao('post', '/exccliente', { cnpj });
+            return json;   
+        },
+        pegaCodigoCliente: async(cnpj, cpf)=>{
+            let json = await requisicao('post', '/pegacodigocliente', { cnpj });
+            return json;   
+        },
+        pegaTodosCliente: async()=>{
+            debugger
+            let json = await requisicao('post', '/cliente', {});
+            return json;   
+        },
+        //-------------------
+        //CLIENTE - FINAL
+        //-------------------
+
+        //-------------------
+        //PRODUTO - INICIO
+        //-------------------
+        cadProduto: async(unidademedida, codigo, descricao, contato, responsavel, fone, almoxarifado, formData)=>{
+            let json = await requisicao('post', '/incaltproduto', { unidademedida, codigo, descricao, contato, responsavel, fone, almoxarifado, formData });
+            return json;   
+        },
+        excProduto: async(codigo)=>{
+            let json = await requisicao('post', '/excproduto', { codigo });
+            return json;   
+        },
+        pegaCodigoProduto: async(codigo)=>{
+            let json = await requisicao('post', '/pegacodigoproduto', { codigo });
+            return json;   
+        },
+        pegaTodosProduto: async()=>{
+            let json = await requisicao('post', '/produto', {});
+            return json;   
+        },
+        //-------------------
+        //PRODUTO - FINAL
+        //-------------------
+
+        //-------------------
+        //EMPREENDIMENTO - INICIO
+        //-------------------
+        cadEmpreendimento: async(cnpj, codigo, descricao, contato, email, fone, endereco, formData)=>{
+            let json = await requisicao('post', '/incaltempreendimento', { cnpj, codigo, descricao, contato, email, fone, endereco, formData });
+            return json;   
+        },
+        excEmpreendimento: async(cnpj, cpf)=>{
+            let json = await requisicao('post', '/excempreendimento', { cnpj });
+            return json;   
+        },
+        pegaCodigoEmpreendimento: async(cnpj, cpf)=>{
+            let json = await requisicao('post', '/pegacodigoempreendimento', { cnpj });
+            return json;   
+        },
+        pegaTodosEmpreendimento: async()=>{
+            let json = await requisicao('post', '/empreendimento', {});
+            return json;   
+        },
+        //-------------------
+        //EMPREENDIMENTO - FINAL
+        //-------------------        
+
         pegaPeriodos: async(filial, centrocusto) => {
             let json = await requisicao('post', '/periodos', { filial, centrocusto });
             console.log(json)

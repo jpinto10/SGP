@@ -69,18 +69,19 @@ export default function GridCliente( {
     }, [adados])
 
     async function loadingCliente(){
-        let todosClientes = await conect.pegaTodosClientes()
+        debugger
+        let todosClientes = await conect.pegaTodosCliente()
         if(todosClientes.auth){
-            for (let index = 0; index < todosClientes.dadosCliente.length; index++) {
+            for (let index = 0; index < todosClientes.dadoscliente.length; index++) {
                 itensGrid.push(
                     {
-                        codigo:     todosClientes.dadosCliente[index].codigo,  
-                        endereco:   todosClientes.dadosCliente[index].endereco, 
-                        contato:    todosClientes.dadosCliente[index].contato, 
-                        cnpj:       todosClientes.dadosCliente[index].cnpj, 
-                        nome:       todosClientes.dadosCliente[index].descricao, 
-                        fone:       todosClientes.dadosCliente[index].fone, 
-                        email:      todosClientes.dadosCliente[index].email, 
+                        codigo:     todosClientes.dadoscliente[index].codigo,  
+                        endereco:   todosClientes.dadoscliente[index].endereco, 
+                        contato:    todosClientes.dadoscliente[index].contato, 
+                        cnpj:       todosClientes.dadoscliente[index].cnpj, 
+                        nome:       todosClientes.dadoscliente[index].descricao, 
+                        fone:       todosClientes.dadoscliente[index].fone, 
+                        email:      todosClientes.dadoscliente[index].email, 
                         btAlt:      'ALT', 
                         btExc:      'EXC', 
                         // btnConsult: 'CSL'

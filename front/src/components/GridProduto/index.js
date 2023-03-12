@@ -39,14 +39,11 @@ export default function GridProduto( {
         { id: '1',  value: 'Código'},
         { id: '2',  value: 'Descrição'},
         { id: '3',  value: 'Unidade Medida '},
-        { id: '4',  value: 'Responsável ' },
-        { id: '5',  value: 'Fornecedor '},
-        { id: '6',  value: 'Estoque Mínimo ' },
-        { id: '7',  value: 'Custo Unitário' },
-        { id: '8',  value: 'Qtd. Atual ' },
-        { id: '9',  value: 'Qtd Disponível ' },
-        { id: '10', value: 'Qtd Pendente ' },
-        { id: '11', value: 'Ação'}
+        { id: '4',  value: 'Contato ' },
+        { id: '5',  value: 'Responsável ' },
+        { id: '6',  value: 'Fone ' },
+        { id: '7',  value: 'Almoxarifado ' },
+        { id: '8', value: 'Ação'}
     ])
 
     const [adados, setAdados] = useState([]);
@@ -72,18 +69,18 @@ export default function GridProduto( {
     }, [adados])
 
     async function loadingProduto(){
-        let todosProdutos = await conect.pegaTodosProdutos()
+        let todosProdutos = await conect.pegaTodosProduto()
         if(todosProdutos.auth){
-            for (let index = 0; index < todosProdutos.dadosProduto.length; index++) {
+            for (let index = 0; index < todosProdutos.dadosproduto.length; index++) {
                 itensGrid.push(
                     {
-                        codigo:     todosProdutos.dadosProduto[index].codigo,  
-                        endereco:   todosProdutos.dadosProduto[index].endereco, 
-                        contato:    todosProdutos.dadosProduto[index].contato, 
-                        cnpj:       todosProdutos.dadosProduto[index].cnpj, 
-                        nome:       todosProdutos.dadosProduto[index].descricao, 
-                        fone:       todosProdutos.dadosProduto[index].fone, 
-                        email:      todosProdutos.dadosProduto[index].email, 
+                        codigo:     todosProdutos.dadosproduto[index].codigo,  
+                        nome:       todosProdutos.dadosproduto[index].descricao, 
+                        unidademedida:   todosProdutos.dadosproduto[index].unidademedida, 
+                        contato:    todosProdutos.dadosproduto[index].contato, 
+                        responsavel:    todosProdutos.dadosproduto[index].responsavel, 
+                        fone:       todosProdutos.dadosproduto[index].fone, 
+                        almoxarifado:       todosProdutos.dadosproduto[index].almoxarifado, 
                         btAlt:      'ALT', 
                         btExc:      'EXC', 
                         // btnConsult: 'CSL'
