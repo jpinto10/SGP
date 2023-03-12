@@ -39,11 +39,9 @@ export default function GridObra( {
         { id: '1',  value: 'Código'},
         { id: '2',  value: 'Descrição'},
         { id: '3',  value: 'Responsável ' },
-        { id: '4',  value: 'Custo Atual' },
-        { id: '8',  value: 'Qtd. Atual ' },
-        { id: '9',  value: 'Qtd Disponível ' },
-        { id: '10', value: 'Qtd Pendente ' },
-        { id: '11', value: 'Ação'}
+        { id: '4',  value: 'Dt.Inicio ' },
+        { id: '5',  value: 'Dt.Previsão ' },
+        { id: '6',  value: 'Ação'}
     ])
 
     const [adados, setAdados] = useState([]);
@@ -69,20 +67,18 @@ export default function GridObra( {
     }, [adados])
 
     async function loadingObra(){
-        let todosObras = await conect.pegaTodosObras()
+        let todosObras = await conect.pegaTodosEmpreendimento()
         if(todosObras.auth){
-            for (let index = 0; index < todosObras.dadosObra.length; index++) {
+            for (let index = 0; index < todosObras.dadosempreendimento.length; index++) {
                 itensGrid.push(
                     {
-                        codigo:     todosObras.dadosObra[index].codigo,  
-                        endereco:   todosObras.dadosObra[index].endereco, 
-                        contato:    todosObras.dadosObra[index].contato, 
-                        cnpj:       todosObras.dadosObra[index].cnpj, 
-                        nome:       todosObras.dadosObra[index].descricao, 
-                        fone:       todosObras.dadosObra[index].fone, 
-                        email:      todosObras.dadosObra[index].email, 
-                        btAlt:      'ALT', 
-                        btExc:      'EXC', 
+                        codigo:         todosObras.dadosempreendimento[index].codigo,  
+                        descricao:      todosObras.dadosempreendimento[index].descricao, 
+                        responsavel:    todosObras.dadosempreendimento[index].responsavel, 
+                        dtinicio:       todosObras.dadosempreendimento[index].dtinicio, 
+                        dtprevisao:     todosObras.dadosempreendimento[index].dtprevisao, 
+                        btAlt:          'ALT', 
+                        btExc:          'EXC', 
                         // btnConsult: 'CSL'
                     })
                     

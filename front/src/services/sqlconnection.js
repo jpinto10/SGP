@@ -95,16 +95,16 @@ export default () => {
         //-------------------
         //EMPREENDIMENTO - INICIO
         //-------------------
-        cadEmpreendimento: async(cnpj, codigo, descricao, contato, email, fone, endereco, formData)=>{
-            let json = await requisicao('post', '/incaltempreendimento', { cnpj, codigo, descricao, contato, email, fone, endereco, formData });
+        cadEmpreendimento: async(responsavel, codigo, descricao, dtinicio, dtprevisao, formData)=>{
+            let json = await requisicao('post', '/incaltempreendimento', { responsavel, codigo, descricao, dtinicio, dtprevisao, formData });
             return json;   
         },
-        excEmpreendimento: async(cnpj, cpf)=>{
-            let json = await requisicao('post', '/excempreendimento', { cnpj });
+        excEmpreendimento: async(codigo)=>{
+            let json = await requisicao('post', '/excempreendimento', { codigo });
             return json;   
         },
-        pegaCodigoEmpreendimento: async(cnpj, cpf)=>{
-            let json = await requisicao('post', '/pegacodigoempreendimento', { cnpj });
+        pegaCodigoEmpreendimento: async(codigo)=>{
+            let json = await requisicao('post', '/pegacodigoempreendimento', { codigo });
             return json;   
         },
         pegaTodosEmpreendimento: async()=>{

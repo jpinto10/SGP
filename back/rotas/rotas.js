@@ -382,8 +382,6 @@ const SECRET = 'SGPCONSULT';
 
     routers.post('/excproduto', async function(req, res) {
         //MONTAGE DOS DADOS PARA GRAVAÇÃO 
-        const _CNPJ = req.body.cnpj
-        const _CPF = req.body.cpf
         
         const sql0 = `SELECT COUNT(id) as item FROM produto WHERE codigo = '${_CODIGO}' `
         const rows0 = await conn.dbConect(sql0)
@@ -394,7 +392,7 @@ const SECRET = 'SGPCONSULT';
         } else {
             const sql = `UPDATE produto SET 
                 DELETADO        = '*' 
-                WHERE cnpj = '${_CNPJ}' `
+                WHERE cnpj = '${_CODIGO}' `
             const rows = await conn.dbConect(sql)
             if (rows.rowsAffected.length) {
                 return res.status(200).json({ auth: true });
@@ -407,6 +405,128 @@ const SECRET = 'SGPCONSULT';
     //-------------------
     //PRODUTO - FINAL
     //-------------------
+
+
+    //-------------------
+    //EMPREENDIMENTO - INICIO
+    //-------------------
+    routers.post('/pegacodigoempreendimento', async function(req, res) {
+        const sql1 = `SELECT MAX(id) as item FROM SGP.dbo.empreendimento `
+        const rows1 = await conn.dbConect(sql1)
+        const _ID = rows1.recordset[0].item + 1
+        
+        const segCodigo = '000000'
+        const _CODIGO = segCodigo.slice(6-length(_ID)) + _ID
+
+        if (_CODIGO.length) {
+            return res.status(200).json({ auth: true, _CODIGO });
+        } else {
+            return res.status(200).json({ auth: false });
+        };
+        conn.dbCloseConect();
+
+    });
+
+    routers.post('/empreendimento', async function(req, res) {
+        const sql = `SELECT * FROM empreendimento WHERE DELETADO = '' ORDER BY CODIGO, DESCRICAO `
+        const rows = await conn.dbConect(sql)
+
+        if (rows.recordset.length) {
+            let dadosempreendimento = rows.recordset
+            return res.status(200).json({ auth: true, dadosempreendimento });
+        } else {
+            return res.status(200).json({ auth: false });
+        };
+        conn.dbCloseConect();
+
+    });
+
+    //inc alt empreendimento - inclui e eltera empreendimento
+    routers.post('/incaltempreendimento', async function(req, res) {
+        //MONTAGE DOS DADOS PARA GRAVAÇÃO 
+        const _CODIGO = req.body.codigo
+        
+        const sql0 = `SELECT COUNT(id) as item FROM empreendimento WHERE codigo = '${_CODIGO}' `
+        const rows0 = await conn.dbConect(sql0)
+        const _temFornece = rows0.recordset[0].item
+    
+        if (_temFornece === 0) {
+           
+            const _DESCRICAO        = req.body.descricao 
+            const _RESPONSAVEL      = req.body.responsavel
+            const _DTINICIO         = req.body.dtinicio
+            const _DTPREVISAO       = req.body.dtprevisao
+        
+            const sql1 = `SELECT MAX(id) as item FROM empreendimento `
+            const rows1 = await conn.dbConect(sql1)
+            const _ID = rows1.recordset[0].item + 1
+            
+            if(!req.body.codigo){
+                const segCodigo = '000000'
+                const _CODIGO = segCodigo.slice(6-length(_ID)) + _ID
+            }
+
+            const sql = `INSERT INTO empreendimento(CODIGO, DESCRICAO, RESPONSAVEL, DTINICIO, DTPREVISAOFINAL,  DELETADO ) VALUES(
+                '${_CODIGO}', '${_DESCRICAO}', '${_RESPONSAVEL}', '${_DTINICIO}', '${_DTPREVISAO}', '') `
+            const rows = await conn.dbConect(sql)
+
+            if (rows.rowsAffected.length) {
+                return res.status(200).json({ auth: true  });
+            } else {
+                return res.status(200).json({ auth: false });
+            };
+        } else {
+
+            const _DESCRICAO        = req.body.descricao 
+            const _RESPONSAVEL      = req.body.responsavel
+            const _DTINICIO         = req.body.dtinicio
+            const _DTPREVISAO       = req.body.dtprevisao
+        
+            
+            const sql = `UPDATE empreendimento SET
+                DESCRICAO       = '${_DESCRICAO}',
+                RESPONSAVEL     = '${_RESPONSAVEL}',
+                DTINICIO        = '${_DTINICIO}',
+                DTPREVISAOFINAL = '${_DTPREVISAO}'           
+                WHERE codigo = '${_CODIGO}' `
+            const rows = await conn.dbConect(sql)
+            if (rows.rowsAffected.length) {
+                return res.status(200).json({ auth: true });
+            } else {
+                return res.status(200).json({ auth: false });
+            };
+            
+        }
+        conn.dbCloseConect();
+
+    });
+
+    routers.post('/excempreendimento', async function(req, res) {
+        //MONTAGE DOS DADOS PARA GRAVAÇÃO 
+        
+        const sql0 = `SELECT COUNT(id) as item FROM empreendimento WHERE codigo = '${_CODIGO}' `
+        const rows0 = await conn.dbConect(sql0)
+        const _temFornece = rows0.recordset[0].item
+    
+        if (_temFornece === 0) {
+            return res.status(200).json({ auth: false });
+        } else {
+            const sql = `UPDATE empreendimento SET 
+                DELETADO        = '*' 
+                WHERE cnpj = '${_CODIGO}' `
+            const rows = await conn.dbConect(sql)
+            if (rows.rowsAffected.length) {
+                return res.status(200).json({ auth: true });
+            } else {
+                return res.status(200).json({ auth: false });
+            };
+        };
+        conn.dbCloseConect();
+    });
+    //-------------------
+    //EMPREENDIMENTO - FINAL
+    //-------------------
+
 
 
 

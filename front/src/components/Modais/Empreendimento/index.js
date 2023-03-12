@@ -13,11 +13,11 @@ import { toast  } from 'react-toastify';
 export default function Empreendimento(props){
     const conect = conn()
 
-    const [cnpj, setCnpj]           = useState('')
+    const [responsavel, setResponsavel]           = useState('')
     const [codigo, setCodigo]       = useState('')
     const [descricao, setDescricao] = useState('')
-    const [contato, setContato]     = useState('')
-    const [email, setEmail]         = useState('')
+    const [dtinicio, setDtinicio]   = useState('')
+    const [dtprevisao, setdtPrevisao]  = useState('')
     const [fone, setFone]           = useState('')
     const [endereco, setEndereco]   = useState('')
 
@@ -29,12 +29,10 @@ export default function Empreendimento(props){
     function loadDadosEditaveis(){
         if(props.dadosEditaveis.codigo && props.acao !== 'INCLUSÃO'){
             setCodigo(props.dadosEditaveis.codigo)
-            setCnpj(props.dadosEditaveis.cnpj)
-            setDescricao(props.dadosEditaveis.nome)
-            setContato(props.dadosEditaveis.contato)
-            setEmail(props.dadosEditaveis.email)
-            setFone(props.dadosEditaveis.fone)
-            setEndereco(props.dadosEditaveis.endereco)
+            setResponsavel(props.dadosEditaveis.responsavel)
+            setDescricao(props.dadosEditaveis.descricao)
+            setDtinicio(props.dadosEditaveis.dtinicio)
+            setdtPrevisao(props.dadosEditaveis.dtprevisao)
         }
     }
 
@@ -45,14 +43,14 @@ export default function Empreendimento(props){
     const handleDescricao = (e)=>{
         setDescricao(e.target.value)        
     }
-    const handleCnpj = (e)=>{
-        setCnpj(e.target.value)        
+    const handleresponsavel = (e)=>{
+        setResponsavel(e.target.value)        
     }
-    const handlecontato = (e)=>{
-        setContato(e.target.value)                
+    const handledtinicio = (e)=>{
+        setDtinicio(e.target.value)                
     }
-    const handleEmail = (e)=>{
-        setEmail(e.target.value)                
+    const handledtprevisao = (e)=>{
+        setdtPrevisao(e.target.value)                
     }
     const handleFone =  (e)=>{
         setFone(e.target.value)                
@@ -65,7 +63,7 @@ export default function Empreendimento(props){
         e.preventDefault();
         const formData = new FormData();
         if(props.acao === 'EXCLUSÃO'){
-            let exclueEmpreendimento = await conect.excEmpreendimento(cnpj)
+            let exclueEmpreendimento = await conect.excEmpreendimento(responsavel)
             if (exclueEmpreendimento.auth){
                 toast("Exclusão Realizada com Sucesso", {
                     autoClose:3000,
@@ -76,7 +74,7 @@ export default function Empreendimento(props){
             }
 
         }else{
-            let gravaEmpreendimento = await conect.cadEmpreendimento(cnpj, codigo, descricao, contato, email, fone, endereco, formData)
+            let gravaEmpreendimento = await conect.cadEmpreendimento(responsavel, codigo, descricao, dtinicio, dtprevisao, formData)
             if (gravaEmpreendimento.auth){
                 toast("ALTERAÇÃO REALIZADA", {
                     autoClose:3000,
@@ -102,16 +100,12 @@ export default function Empreendimento(props){
                         <TabPanel className='tabAdm'>
                             <div className='campos'>
                                 <Input maxLen={6} className={'coluna1'} value={codigo} name={'codigo'} funcao={handleCodigo} Apresenta={'Código'} />
-                                <Input className={'coluna2'} value={descricao} name={'descricao'} funcao={handleDescricao} Apresenta={'Descrição'} />
-                                <Input className={'coluna3'} value={cnpj} name={'cnpj'} funcao={handleCnpj} Apresenta={'cnpj'} />
+                                <Input className={'coluna3'} value={descricao} name={'descricao'} funcao={handleDescricao} Apresenta={'Descrição'} />
                             </div>
                             <div className='campos'>
-                                <Input className={'coluna1'} value={contato} name={'contato'} funcao={handlecontato} Apresenta={'Contado'} />
-                                <Input className={'coluna2'} value={email} name={'email'} funcao={handleEmail} Apresenta={'E-mail'} />
-                                <Input className={'coluna3'} value={fone} name={'fone'} funcao={handleFone} Apresenta={'Fone'} />
-                            </div>
-                            <div className='campos'>
-                                <Input className={'coluna0'} value={endereco} name={'endereco'} funcao={handleEndereco} Apresenta={'Endereço'} />
+                                <Input className={'coluna1'} value={dtinicio} name={'dtinicio'} funcao={handledtinicio} Apresenta={'Data Inicio'} />
+                                <Input className={'coluna1'} value={dtprevisao} name={'dtprevisao'} funcao={handledtprevisao} Apresenta={'Dt. Previsão'} />
+                                <Input className={'coluna3'} value={responsavel} name={'responsavel'} funcao={handleresponsavel} Apresenta={'Responsável'} />
                             </div>
 
                         </TabPanel>
